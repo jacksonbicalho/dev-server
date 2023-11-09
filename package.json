@@ -8,9 +8,11 @@
   "files": [
     "dist",
     "bin",
+    "cli",
     "server",
     "utils"
   ],
+  "types": "app.d.ts",
   "main": "./dist/main.js",
   "bin": {
     "https-dev": "./dist/bin/https-dev.js"
