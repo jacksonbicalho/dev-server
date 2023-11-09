@@ -1,9 +1,7 @@
 import path from "path";
-import ReadEnv from "../utils/read-env";
 
 const { program } = require("@commander-js/extra-typings");
 const { execFile } = require("child_process");
-ReadEnv();
 
 const publicDomain = process.env.PUBLIC_DOMAIN;
 export const options = program
@@ -12,10 +10,10 @@ export const options = program
 .parse()
 .opts();
 
-const Cli = () => {
-  const newcert = path.resolve(__dirname, 'newcert.sh');
+const mkcert = () => {
+  const mkcertSh = path.resolve(__dirname, 'newcert.sh');
   execFile(
-    `${newcert}`,
+    `${mkcertSh}`,
     [options.domain, options.path],
     // @ts-ignore: Unreachable code error
     (error, stdout, stderr) => {
@@ -29,4 +27,4 @@ const Cli = () => {
     }
   );
 };
-module.exports = Cli();
+module.exports = mkcert();
