@@ -1,0 +1,1 @@
+"\n    import { getDefaultConfig } from '@jacksonbicalho/https-dev/Config'\n    module.exports = function () {\n      const config = getDefaultConfig([object Object])\n      return config\n    }\n    "

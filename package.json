@@ -18,7 +18,7 @@
     "https-dev": "./dist/bin/https-dev.js"
   },
   "scripts": {
-    "build": "rm -rf dist && tsc -p tsconfig.build.json && cp -r src/cli/newcert.sh ./dist/cli/newcert.sh",
+    "build": "rm -rf dist && tsc -p tsconfig.build.json && cp -r src/lib/cli/newcert.sh ./dist/lib/cli/newcert.sh",
     "prepublishOnly": "yarn build && yarn pack",
     "newcert": "node ./dist/cli/index.js",
     "start": "node ./dist/main.js",

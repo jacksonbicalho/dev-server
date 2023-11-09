@@ -14,8 +14,13 @@ type ConfigType = {
   keysPath:string
 }
 
+type ConfirmSetupType = {
+  createConfig: boolean
+}
+
 declare module 'ConfigType' {
   export const ConfigType
+  export const ConfirmSetupType
 }
 
 
