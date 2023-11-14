@@ -1,11 +1,11 @@
 import handler from 'serve-handler';
-import https from 'node:https';
+import https, { RequestOptions } from 'node:https';
 
 export type ConfigType = {
   contenPublic: string;
 };
 
-export const server = (options: any, config: ConfigType) =>
+export const server = (options: RequestOptions, config: ConfigType) =>
   https.createServer(options, (request, response) => {
     // You pass two more arguments for config and middleware
     // More details here: https://github.com/vercel/serve-handler#options

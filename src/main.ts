@@ -4,10 +4,11 @@ import path from 'path';
 import { defaultConfig } from './lib/config';
 
 const appConfig = defaultConfig.getAppConfig();
-const DIR_ROOT = path.resolve(`${appConfig.rootApp}`);
+console.log('[2023-11-14 10:10:41] >>>>> appConfig: ', appConfig);
+
+const DIR_ROOT = path.join(`${appConfig.rootApp?.split('/')}`);
 
 const publicDomain = appConfig.publicDomain;
-const contenPublic = appConfig.contenPublic;
 const webPort = appConfig.webPort;
 const keys = appConfig.keysPath;
 
@@ -29,11 +30,7 @@ const options = {
   cert: fs.readFileSync(files.cert)
 };
 
-const config: any = {
-  contenPublic: path.join(DIR_ROOT, `${contenPublic}`)
-};
-
-const bootstrap = server(options, config);
+const bootstrap = server(options, appConfig);
 bootstrap.listen(webPort, () => {
   console.log(`Running at https://${publicDomain}:${webPort}`);
 });

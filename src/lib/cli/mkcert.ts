@@ -2,9 +2,9 @@
 
 import path from 'path';
 
-const { program } = require('@commander-js/extra-typings');
-const { execFile } = require('child_process');
-const { defaultConfig } = require('../config');
+import { program } from '@commander-js/extra-typings';
+import { execFile } from 'child_process';
+import { defaultConfig } from '../config';
 
 const appConfig = defaultConfig.getAppConfig();
 export const options = program
@@ -18,8 +18,7 @@ const mkcert = () => {
   execFile(
     `${mkcertSh}`,
     [options.domain, options.path],
-    // @ts-ignore: Unreachable code error
-    (error, stdout, stderr) => {
+    (error: unknown, stdout: unknown, stderr: unknown) => {
       if (error) {
         throw error;
       }

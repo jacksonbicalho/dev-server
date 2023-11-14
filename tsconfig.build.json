@@ -17,10 +17,8 @@
     "outDir": "./dist",
     "baseUrl": ".",
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
+    "forceConsistentCasingInFileNames": true
   },
-  "include": [
-    "src/**/*"
-  ],
+  "include": ["src/**/*"],
   "exclude": ["*.config.js"]
 }

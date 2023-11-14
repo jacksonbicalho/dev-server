@@ -1,8 +1,3 @@
-type mergeConfigType = {
-  [key: string]: unknown;
-  name: string;
-};
-
 type configType = {
   rootApp?: string;
   fileType?: 'json' | 'js' | undefined;

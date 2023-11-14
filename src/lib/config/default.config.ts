@@ -40,8 +40,11 @@ class DefaultConfig {
 
   public getAppConfig(): config {
     const appConfiguration = this.getDefaultConfig();
-    const appConfig = require(path.resolve(`${appConfiguration.rootApp}`, appConfiguration.fileName))
-    return appConfig;
+    const appFile = path.resolve(
+      `${appConfiguration.rootApp}`,
+      appConfiguration.fileName
+    );
+    return require(appFile);
   }
 }
 

@@ -1,6 +1,6 @@
 {
-    "watch": ["src/*", "public/*"],
-    "ext": ".ts,.js,.html",
-    "ignore": [],
-    "exec": "yarn build"
-  }
+  "watch": ["src/*", "public/*"],
+  "ext": ".ts,.js,.html",
+  "ignore": [],
+  "exec": "yarn build"
+}

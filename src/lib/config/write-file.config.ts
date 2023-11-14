@@ -15,7 +15,7 @@ export const writeConfigJs = (config: prompts.Answers<string>) => {
     const config = defaultConfig.getDefaultConfig(#CONFIG#);
     module.exports = config
   `;
-  const obj: { [k: string]: any } = {};
+  const obj: { [k: string]: unknown } = {};
   Object.entries(config).map(
     (config: prompts.Answers<string>) => (obj[config[0]] = `${config[1]}`)
   );
@@ -24,8 +24,5 @@ export const writeConfigJs = (config: prompts.Answers<string>) => {
     `${JSON.stringify(config, null, 2)}`
   );
   writeFile(`${file}`, `${codeStr}`);
-  runCommand('prettier', [
-    `${file}`,
-    '--write'
-  ] as never);
+  runCommand('prettier', [`${file}`, '--write'] as never);
 };

@@ -11,7 +11,11 @@ const exeCommand = (command?: string, args?: string[]) => {
   const binName: string | undefined = command
     ? command
     : args?.shift() ?? undefined;
-  // @ts-ignore: Unreachable code error
+
+  if (binName == undefined) {
+    console.error('command not found'), process.exit(1);
+  }
+
   const [programE, moduleLib] = packageInfo.scripts[binName].split(' ');
   const packageDirLib: string = path.join(packageInfo.packageDir, moduleLib);
   const options: string | undefined = args?.join(' ');
@@ -39,7 +43,7 @@ program
   .option('-p, --path <string>', 'specified path', 'ssl')
   .action(() => exeCommand('mkcert', process.argv));
 
-  program
+program
   .command('postinstall')
   .action(() => exeCommand('postinstall', process.argv));
 
