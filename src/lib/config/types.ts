@@ -1,4 +1,4 @@
-type configType = {
+type ConfigType = {
   rootApp?: string;
   fileType?: 'json' | 'js' | undefined;
   fileName: 'https.config.js' | 'https.config.json' | string;
@@ -6,6 +6,9 @@ type configType = {
   contenPublic: string;
   webPort: string | number;
   keysPath: string;
+  renderSingle?: boolean | undefined;
+  cleanUrls?: boolean | string[];
+  rewrites: { source: string, destination: string }[],
 };
 
 type confirmSetupType = {
@@ -13,6 +16,6 @@ type confirmSetupType = {
 };
 
 declare module '@config/type' {
-  export type config = configType;
+  export type config = ConfigType;
   export type createConfig = confirmSetupType;
 }
