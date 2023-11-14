@@ -4,7 +4,7 @@
     "target": "ESNext",
     "module": "CommonJS",
     "declaration": true,
-    "outDir": "./dist",
+
     /* Checks */
     "strict": true,
     "noUnusedLocals": true,
@@ -13,11 +13,14 @@
     "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "declarationDir": "./dist/@types",
+    // "declarationDir": "./dist/@types",
+    "outDir": "./dist",
+    "baseUrl": ".",
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
   },
   "include": [
     "src/**/*"
-  ]
+  ],
+  "exclude": ["*.config.js"]
 }

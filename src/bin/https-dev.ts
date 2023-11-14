@@ -1,65 +1,46 @@
-// #!/usr/bin/env node
+#!/usr/bin/env node
 
-// import { stderr, stdout } from "process";
-// import { options as optionProgram  } from "../";
-// const path = require("path");
-// const fs = require("fs");
+import { runCommand } from '../lib/cli/run-command';
+import { getPackageInfo } from '../utils/get-package-info';
+import { createCommand } from '@commander-js/extra-typings';
 
-// /**
-//  * @param {string} command process to run
-//  * @param {string[]} args command line arguments
-//  * @returns {Promise<void>} promise
-// */
-// const runCommand = (command: string, args: []) => {
-//   const cp = require("child_process");
-//   return new Promise((resolve, reject) => {
-//     const executedCommand = cp.spawn(command, args, {
-//       stdio: "inherit",
-//       shell: true,
-//     });
-//     executedCommand.on("error", (error: any) => {
-//       reject(error);
-//     });
-//     executedCommand.on("exit", (code: number) => {
-//       if (code === 0) {
+import path from 'path';
 
-//         resolve(stdout? stdout : stderr);
-//       }
-//       else {
-//         reject();
-//       }
-//     });
-//   });
-// };
+const exeCommand = (command?: string, args?: string[]) => {
+  const packageInfo = getPackageInfo();
+  const binName: string | undefined = command
+    ? command
+    : args?.shift() ?? undefined;
+  // @ts-ignore: Unreachable code error
+  const [programE, moduleLib] = packageInfo.scripts[binName].split(' ');
+  const packageDirLib: string = path.join(packageInfo.packageDir, moduleLib);
+  const options: string | undefined = args?.join(' ');
+  runCommand(programE, [packageDirLib, options]);
+};
 
-// const getPath = () => {
-//   const dir = path.resolve(process.cwd());
-//   const nodeModulesDir = path.join(dir, "node_modules");
-//   const packageDir = path.resolve(nodeModulesDir, '@jacksonbicalho/https-dev');
-//   const packageJson = path.join(packageDir, "package.json");
-//   const data = {
-//     dir: dir,
-//     nodeModulesDir: nodeModulesDir,
-//     packageDir: packageDir,
-//     packageJson: packageJson,
-//     scripts: JSON.parse(fs.readFileSync(`${packageJson}`, {
-//       encoding: "utf8",
-//       flag: 'r',
-//     })).scripts
-//   }
+const program = createCommand('https-dev');
+program
+  .name('https-dev')
+  .usage('command [options]')
+  .version('0.1.0')
+  .command('setup', { isDefault: true })
+  .description('generate config file')
+  .action(() => exeCommand('setup'));
 
-//   return data;
-// };
+program
+  .command('start')
+  .description('start server https')
+  .action(() => exeCommand('start'));
 
+program
+  .command('mkcert')
+  .description('generate ssl keys')
+  .option('-d, --domain <string>', 'specified domain', 'publicDomain')
+  .option('-p, --path <string>', 'specified path', 'ssl')
+  .action(() => exeCommand('mkcert', process.argv));
 
-// const data = getPath();
-// const args: string[] = process.argv.slice(2);
-// const binName: string | undefined = args.shift();
-// if (!binName || data.scripts[binName] == undefined) {
-//   optionProgram.parse(process.argv);
-//   process.exit(1);
-// }
-// const [programE, moduleLib] = data.scripts[binName].split(' ');
-// const packageDirLib: string = path.join(data.packageDir, moduleLib);
-// const options: string = args.join(' ');
-// runCommand(programE, [packageDirLib, options] as never)
+  program
+  .command('postinstall')
+  .action(() => exeCommand('postinstall', process.argv));
+
+program.parse(process.argv);

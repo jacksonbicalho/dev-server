@@ -1,4 +1,1 @@
-export * from './lib';
-export * from './main';
-export * from './server';
-export * from './utils';
+export { defaultConfig } from "./lib/config";
