@@ -16,7 +16,24 @@ export const Questions = async (): Promise<DefaultQuestionsType[]> => [
     inactive: 'no',
     active: 'yes',
     message:
-      'Por padrão precisamos criar um arquivo de configuração,\nVamos continuar? [Y/n]'
+    `By default we need to create a configuration file.\n
+    Let's continue? [Y/n]`
+  },
+  {
+    choices: [
+      { title: 'Default', value: 'd' },
+      { title: 'Custon', value: 'c' }
+    ],
+    initial: 0,
+    message: 'You can use a default configuration or customize it?',
+    name: 'custonOrDefault',
+    type: 'select'
+  },
+  {
+    type: prev => prev == 'd' ? 'confirm' : null,
+    name: 'confirmDefault',
+    initial: true,
+    message: () => `Por favor confirma a criação de arquivo acima[n/Y]?`
   },
   {
     choices: [
@@ -56,7 +73,7 @@ export const Questions = async (): Promise<DefaultQuestionsType[]> => [
 
 export const confirm: PromptObject = {
   initial: true,
-  message: 'vamos criar o arquivo a configuração? [Y/n]',
+  message: 'vamos criar o arquivo a configuração? [n/Y]',
   name: 'createConfig',
   type: 'confirm'
 };

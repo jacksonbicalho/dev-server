@@ -11,6 +11,17 @@ import { writeConfigJs } from '../config/write-file.config';
       if (prompt.name == 'createConfig' && answer == false) {
         this.onCancel;
       }
+      if (prompt.name == 'custonOrDefault' && answer == 'd') {
+        const configs = Object.entries(defaultConfig.getDefaultConfig())
+        console.log('Confira a lista de configurações padrão:\n');
+        configs.map((config) => console.log(`${config[0]}: ${config[1]}\n`))
+      }
+      if (prompt.name == 'confirmDefault' && answer) {
+        if (config.fileType == 'js') {
+          writeConfigJs(config);
+        }
+      }
+
     },
     onCancel: () => console.warn('Bye!')
   });

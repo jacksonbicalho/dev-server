@@ -39,7 +39,7 @@ class DefaultConfig {
   }
 
   public getAppConfig(): config {
-    const appConfiguration = this.getDefaultConfig();
+    const appConfiguration = this.getDefaultConfig(this.wrappedConfig);
     const appFile = path.resolve(
       `${appConfiguration.rootApp}`,
       appConfiguration.fileName

@@ -5,3 +5,6 @@ dist
 *.log
 
 *.tgz
+
+
+examples/**/*.config.js

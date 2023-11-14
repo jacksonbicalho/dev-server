@@ -4,11 +4,18 @@ import prompts from 'prompts';
 import { runCommand } from '../cli/run-command';
 
 export const writeConfigJs = (config: prompts.Answers<string>) => {
+
+  const cleanConfig = [
+    'custonOrDefault',
+    'confirmDefault',
+    'fileType',
+    'fileName',
+    'createConfig',
+    'rootApp',
+  ];
+
   const file = path.resolve(`${config.rootApp}`, config.fileName);
-  delete config.fileType;
-  delete config.fileName;
-  delete config.createConfig;
-  delete config.rootApp;
+  cleanConfig.map((conf) => delete config[conf])
 
   const template = `
     const { defaultConfig } = require("@jacksonbicalho/https-dev");
