@@ -2,7 +2,7 @@
 
 import path from 'path';
 
-import { program } from '@commander-js/extra-typings';
+import { program, } from '@commander-js/extra-typings';
 import { execFile } from 'child_process';
 import { defaultConfig } from '../config';
 
