@@ -3,6 +3,6 @@
 import importLocal from 'import-local';
 
 if (!importLocal(__filename)) {
-  require('../lib/cli/https-cli');
+  require('../lib/cli/ssl-cli');
 }
 

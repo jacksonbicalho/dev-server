@@ -16,7 +16,7 @@
   ],
   "main": "./dist/index.js",
   "bin": {
-    "https-dev": "./dist/bin/https-dev.js"
+    "ssl": "./dist/bin/ssl.js"
   },
   "scripts": {
     "build": "rm -rf dist && tsc -p tsconfig.build.json && cp -r src/lib/cli/mkcert.sh ./dist/lib/cli/mkcert.sh",
@@ -30,6 +30,7 @@
     "lint": "eslint . --ext .ts"
   },
   "dependencies": {
+    "@commander-js/extra-typings": "^11.1.0",
     "commander": "^11.1.0",
     "dotenv": "^16.3.1",
     "global": "^4.4.0",

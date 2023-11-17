@@ -20,7 +20,8 @@ const mkcert = () => {
     [options.domain, options.path],
     (error: unknown, stdout: unknown, stderr: unknown) => {
       if (error) {
-        throw error;
+        console.error(error)
+        process.exit(1);
       }
       if (stderr) {
         console.warn(stderr);
