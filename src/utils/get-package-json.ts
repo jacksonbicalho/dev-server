@@ -1,11 +1,25 @@
-import { readFile } from './files';
-import path from "path";
+import path from 'path';
+import type { PackageJson } from 'types-package-json';
+import { fileExists, readFile } from '../utils';
 
-export const getPackageJson = () => {
-  const packageJsonDir = path.resolve(`${process.env.OLDPWD}`, 'package.json');
-  const packageJsonObj = JSON.parse(readFile(packageJsonDir));
-  const packageName = packageJsonObj.name;
-  const packageJsonDirInstalled = path.resolve(`${process.env.INIT_CWD}`, 'node_modules', packageName, 'package.json');
-  const packageJsonObjInstalled = JSON.parse(readFile(packageJsonDirInstalled));
-  return packageJsonObjInstalled;
+export const getHttpsPackageJson = () => {
+  const directories = Object.values(module.paths).flatMap((directory) =>
+    directory.split('node_modules')
+  );
+  const files: Partial<PackageJson>[] = [];
+  directories.map((dir) => {
+    const file = path.join('node_modules', dir, 'package.json');
+    if (fileExists(file)) {
+      const packageJson = JSON.parse(readFile(file));
+      const index = files.findIndex((f) => f.name === packageJson.name);
+      if (index == -1) {
+        files.push(JSON.parse(readFile(file)));
+      }
+    }
+  });
+  if (files.length < 1) {
+    console.error('file not found');
+    process.exit(1);
+  }
+  return files[0];
 };

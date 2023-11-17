@@ -19,6 +19,7 @@ export const writeConfigJs = (config: prompts.Answers<string>) => {
 
   const template = `
     const { defaultConfig } = require("@jacksonbicalho/https-dev");
+    // ## https://www.npmjs.com/package/serve-handler#options
     const config = defaultConfig.getDefaultConfig(#CONFIG#);
     module.exports = config
   `;
