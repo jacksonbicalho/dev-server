@@ -12,7 +12,7 @@ Vocẽ precisa adicionar https://npm.pkg.github.com para o name space `@jacksonb
   npm login --scope=@jacksonbicalho --auth-type=legacy --registry=https://npm.pkg.github.com
 ```
 Agora é só instalar
-```bash
+``` bash
 npm install --save-dev @jacksonbicalho/https-dev
 ```
 
