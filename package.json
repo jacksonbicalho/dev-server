@@ -30,7 +30,6 @@
     "lint": "eslint . --ext .ts"
   },
   "dependencies": {
-    "@commander-js/extra-typings": "^11.1.0",
     "app-root-path": "^3.1.0",
     "commander": "^11.1.0",
     "dotenv": "^16.3.1",
