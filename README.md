@@ -1,24 +1,16 @@
-# `https-dev` - Servidor https para ser usado durante desenvolvimento
+# `ssl-dev` - Servidor https para ser usado durante desenvolvimento
 
-`https-dev` é uma ferramenta simples de ser usada que resolve principalmente as dificuldades de lidar com desenvolvimento de PWAs.
+`ssl-dev` é uma ferramenta simples de ser usada que resolve principalmente as dificuldades de lidar com desenvolvimento de PWAs.
 
 ## Instalação
 
-Por enquanto `https-dev` está apenas no repositório do github:
-
-Vocẽ precisa adicionar https://npm.pkg.github.com para o name space `@jacksonbicalho`
-
 ``` bash
-  npm login --scope=@jacksonbicalho --auth-type=legacy --registry=https://npm.pkg.github.com
-```
-Agora é só instalar
-``` bash
-npm install --save-dev @jacksonbicalho/https-dev
+npm install --save-dev ssl-dev
 ```
 
 Ou
 ``` bash
-yarn add --dev @jacksonbicalho/https-dev
+yarn add --dev ssl-dev
 ```
 
 ## Comandos
@@ -26,13 +18,13 @@ yarn add --dev @jacksonbicalho/https-dev
 Insira em scripts
 ``` json
   "scripts": {
-    "https": "npx https-dev"
+    "ssl": "npx ssl"
   },
 ```
 
 ## Comandos
 
-`https` responde aos seguintes comandos:
+`ssl` responde aos seguintes comandos:
 
 | **Opções**         | **Descrição**
 |:-------------------|:----------------------------

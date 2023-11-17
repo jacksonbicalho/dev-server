@@ -16,7 +16,7 @@
   ],
   "main": "./dist/index.js",
   "bin": {
-    "ssl": "./dist/bin/ssl.js"
+    "ssl": "dist/bin/ssl.js"
   },
   "scripts": {
     "build": "rm -rf dist && tsc -p tsconfig.build.json && cp -r src/lib/cli/mkcert.sh ./dist/lib/cli/mkcert.sh",
