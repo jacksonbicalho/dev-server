@@ -1,10 +1,10 @@
 {
-  "name": "@jacksonbicalho/https-dev",
+  "name": "ssl-dev",
   "version": "0.0.7-dev",
   "description": "Servidor https de desenvolvimento",
   "author": "Jackson Bicalho",
   "license": "MIT",
-  "homepage": "https://github.com/jacksonbicalho/https-dev",
+  "homepage": "https://github.com/jacksonbicalho/ssl-dev",
   "files": [
     "dist",
     "bin",
