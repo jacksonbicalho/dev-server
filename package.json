@@ -1,6 +1,6 @@
 {
   "name": "ssl-dev",
-  "version": "0.0.7-dev",
+  "version": "0.0.8-dev",
   "description": "Servidor https de desenvolvimento",
   "author": "Jackson Bicalho",
   "license": "MIT",
