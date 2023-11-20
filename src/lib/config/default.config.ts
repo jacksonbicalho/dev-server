@@ -1,10 +1,14 @@
-import {path} from '../../utils';
+import { path } from '../../utils';
 
-
-type isObjectArrayType = string | number | boolean | string[] | {
-  source: string;
-  destination: string;
-}[];
+type isObjectArrayType =
+  | string
+  | number
+  | boolean
+  | string[]
+  | {
+      source: string;
+      destination: string;
+    }[];
 
 const defaultConfigBase: ConfigType = {
   fileType: 'js' || 'json' || undefined,
@@ -15,12 +19,8 @@ const defaultConfigBase: ConfigType = {
   webPort: process.env.WEB_PORT || 8888,
   keysPath: process.env.KEYS_PATH || 'ssl',
   renderSingle: false,
-  cleanUrls: [
-    "/**",
-  ],
-  rewrites: [
-    { source: "app/**", destination: "/index.html" },
-  ],
+  cleanUrls: ['/**'],
+  rewrites: [{ source: 'app/**', destination: '/index.html' }]
 };
 
 class DefaultConfig {
@@ -63,8 +63,7 @@ class DefaultConfig {
     const strConvert: string[] = [''];
     if (Array.isArray(str)) {
       const isObjectArray =
-      str.length > 0 &&
-      str.every((value) => typeof value === 'object');
+        str.length > 0 && str.every((value) => typeof value === 'object');
       if (isObjectArray) {
         str.map((o) => strConvert.push(JSON.stringify(o)));
         return strConvert;
@@ -72,29 +71,29 @@ class DefaultConfig {
     }
 
     return str.toString();
-  }
+  };
 
-
-  public padConfig(): {padKey: number, padValue: number} {
-
+  public padConfig(): { padKey: number; padValue: number } {
     const config = this.getDefaultConfig();
 
-    const key = Object.entries(config).map((conf) => conf[0].length).sort().shift();
+    const key = Object.entries(config)
+      .map((conf) => conf[0].length)
+      .sort()
+      .shift();
 
-    const value = Object.values(this.toArray()).reduce( (longest, currentWord) => {
-      longest = this.isObjectArray(longest);
-      currentWord = this.isObjectArray(currentWord);
-      return currentWord.length > longest.length ? currentWord : longest;
-    }, '').toString().length;
+    const value = Object.values(this.toArray())
+      .reduce((longest, currentWord) => {
+        longest = this.isObjectArray(longest);
+        currentWord = this.isObjectArray(currentWord);
+        return currentWord.length > longest.length ? currentWord : longest;
+      }, '')
+      .toString().length;
 
     return {
-      padKey: key?? 0,
+      padKey: key ?? 0,
       padValue: value
-    }
-
+    };
   }
-
 }
 
 export const defaultConfig = new DefaultConfig(defaultConfigBase);
-

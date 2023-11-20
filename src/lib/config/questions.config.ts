@@ -8,7 +8,6 @@ type DefaultQuestionsType = {
   msg?: string;
 } & PromptObject;
 
-
 export const Questions = async (): Promise<DefaultQuestionsType[]> => [
   {
     type: 'toggle',
@@ -33,7 +32,8 @@ export const Questions = async (): Promise<DefaultQuestionsType[]> => [
     type: (prev) => (prev == 'd' ? 'confirm' : null),
     name: 'confirmDefault',
     initial: true,
-    message: () => `Você confirma a criação do arquivo de configuração com os dados acima? [n/Y]?`
+    message: () =>
+      `Você confirma a criação do arquivo de configuração com os dados acima? [n/Y]?`
   },
   {
     choices: [

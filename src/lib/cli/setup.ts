@@ -30,12 +30,8 @@ class ConfigTable {
           return table.push(
             // @ts-expect-error:next-line
             new ConfigTable(
-              conf[0].toString()
-              .padStart(0, ' ')
-              .padEnd(padKey),
-              JSON.stringify(conf[1])
-                .toString()
-                .padEnd(padValue)
+              conf[0].toString().padStart(0, ' ').padEnd(padKey),
+              JSON.stringify(conf[1]).toString().padEnd(padValue)
             )
           );
         });

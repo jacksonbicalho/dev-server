@@ -8,7 +8,7 @@ type ConfigType = {
   keysPath: string;
   renderSingle?: boolean | undefined;
   cleanUrls?: boolean | string[];
-  rewrites: { source: string, destination: string }[],
+  rewrites: { source: string; destination: string }[];
 };
 
 type confirmSetupType = {

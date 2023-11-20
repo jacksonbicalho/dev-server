@@ -1,7 +1,6 @@
-import {createCommand, path} from '../../utils';
+import { createCommand, path } from '../../utils';
 import { runCommand } from './run-command';
 import { getHttpsPackageJson } from '../../utils/get-package-json';
-
 
 const cli = (command: string, args?: string[]) => {
   const httpsPackageJson = getHttpsPackageJson();
