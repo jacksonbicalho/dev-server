@@ -16,10 +16,10 @@
     "outDir": "./dist",
     "baseUrl": ".",
     "paths": {
-      "@src/*": ["./src/*"]
+      "@src/*": ["./src/*"],
     }
   },
   "compileOnSave": true,
   "include": ["src", "*.ts"],
-  "exclude": ["https.config.js"]
+  "exclude": ["*.config.js", "node_modules"]
 }

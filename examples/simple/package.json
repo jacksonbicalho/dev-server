@@ -4,9 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "https": "npx https-dev"
+    "ssl": "npx ssl"
   },
   "devDependencies": {
-    "@jacksonbicalho/https-dev": "../../"
+    "ssl-dev": "../../"
   }
 }

@@ -4,21 +4,20 @@ import prompts from 'prompts';
 import { runCommand } from '../cli/run-command';
 
 export const writeConfigJs = (config: prompts.Answers<string>) => {
-
   const cleanConfig = [
     'custonOrDefault',
     'confirmDefault',
     'fileType',
     'fileName',
     'createConfig',
-    'rootApp',
+    'rootApp'
   ];
 
   const file = path.resolve(`${config.rootApp}`, config.fileName);
-  cleanConfig.map((conf) => delete config[conf])
+  cleanConfig.map((conf) => delete config[conf]);
 
   const template = `
-    const { defaultConfig } = require("@jacksonbicalho/https-dev");
+    import defaultConfig from 'ssl-dev';
     // ## https://www.npmjs.com/package/serve-handler#options
     const config = defaultConfig.getDefaultConfig(#CONFIG#);
     module.exports = config
@@ -31,6 +30,7 @@ export const writeConfigJs = (config: prompts.Answers<string>) => {
     '#CONFIG#',
     `${JSON.stringify(config, null, 2)}`
   );
+
   writeFile(`${file}`, `${codeStr}`);
   runCommand('prettier', [`${file}`, '--write'] as never);
 };

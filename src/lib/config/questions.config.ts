@@ -8,6 +8,7 @@ type DefaultQuestionsType = {
   msg?: string;
 } & PromptObject;
 
+
 export const Questions = async (): Promise<DefaultQuestionsType[]> => [
   {
     type: 'toggle',
@@ -15,8 +16,7 @@ export const Questions = async (): Promise<DefaultQuestionsType[]> => [
     initial: 'yes',
     inactive: 'no',
     active: 'yes',
-    message:
-    `By default we need to create a configuration file.\n
+    message: `By default we need to create a configuration file.\n
     Let's continue? [Y/n]`
   },
   {
@@ -30,10 +30,10 @@ export const Questions = async (): Promise<DefaultQuestionsType[]> => [
     type: 'select'
   },
   {
-    type: prev => prev == 'd' ? 'confirm' : null,
+    type: (prev) => (prev == 'd' ? 'confirm' : null),
     name: 'confirmDefault',
     initial: true,
-    message: () => `Por favor confirma a criação de arquivo acima[n/Y]?`
+    message: () => `Você confirma a criação do arquivo de configuração com os dados acima? [n/Y]?`
   },
   {
     choices: [

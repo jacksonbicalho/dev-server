@@ -1,4 +1,10 @@
-import path from 'path';
+import {path} from '../../utils';
+
+
+type isObjectArrayType = string | number | boolean | string[] | {
+  source: string;
+  destination: string;
+}[];
 
 const defaultConfigBase: ConfigType = {
   fileType: 'js' || 'json' || undefined,
@@ -24,12 +30,12 @@ class DefaultConfig {
     this.wrappedConfig = config ?? defaultConfigBase;
   }
 
-  public to_JSON(): JSON {
+  public toJSON(): JSON {
     const config = JSON.stringify(this.wrappedConfig, null, 2);
     return JSON.parse(config);
   }
 
-  public to_Array(): ConfigType {
+  public toArray(): ConfigType {
     return Object.entries(this.wrappedConfig) as never;
   }
 
@@ -52,6 +58,43 @@ class DefaultConfig {
     );
     return require(appFile);
   }
+
+  public isObjectArray = (str: isObjectArrayType): string | string[] => {
+    const strConvert: string[] = [''];
+    if (Array.isArray(str)) {
+      const isObjectArray =
+      str.length > 0 &&
+      str.every((value) => typeof value === 'object');
+      if (isObjectArray) {
+        str.map((o) => strConvert.push(JSON.stringify(o)));
+        return strConvert;
+      }
+    }
+
+    return str.toString();
+  }
+
+
+  public padConfig(): {padKey: number, padValue: number} {
+
+    const config = this.getDefaultConfig();
+
+    const key = Object.entries(config).map((conf) => conf[0].length).sort().shift();
+
+    const value = Object.values(this.toArray()).reduce( (longest, currentWord) => {
+      longest = this.isObjectArray(longest);
+      currentWord = this.isObjectArray(currentWord);
+      return currentWord.length > longest.length ? currentWord : longest;
+    }, '').toString().length;
+
+    return {
+      padKey: key?? 0,
+      padValue: value
+    }
+
+  }
+
 }
 
 export const defaultConfig = new DefaultConfig(defaultConfigBase);
+

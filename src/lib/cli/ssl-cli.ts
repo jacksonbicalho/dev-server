@@ -1,5 +1,4 @@
-import { createCommand } from '@commander-js/extra-typings';
-import path from 'path';
+import {createCommand, path} from '../../utils';
 import { runCommand } from './run-command';
 import { getHttpsPackageJson } from '../../utils/get-package-json';
 

@@ -7,23 +7,6 @@
   resolved "https://registry.yarnpkg.com/@commander-js/extra-typings/-/extra-typings-11.1.0.tgz#dd19fcb8cc6e33ede237fc1b7af96c70833d8f93"
   integrity sha512-GuvZ38d23H+7Tz2C9DhzCepivsOsky03s5NI+KCy7ke1FNUvsJ2oO47scQ9YaGGhgjgNW5OYYNSADmbjcSoIhw==
 
-"@jacksonbicalho/https-dev@../../":
-  version "0.0.5-dev"
-  dependencies:
-    "@commander-js/extra-typings" "^11.1.0"
-    app-root-path "^3.1.0"
-    commander "^11.1.0"
-    dotenv "^16.3.1"
-    import-local "^3.1.0"
-    prettier "^3.1.0"
-    serve-handler "^6.1.5"
-    user "^0.0.0"
-
-app-root-path@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/app-root-path/-/app-root-path-3.1.0.tgz#5971a2fc12ba170369a7a1ef018c71e6e47c2e86"
-  integrity sha512-biN3PwB2gUtjaYy/isrU3aNWI5w+fAfvHkSvCKeQGxhmYpwKFUxudR3Yya+KqVRHBmEDYh+/lTozYCFbmzX4nA==
-
 balanced-match@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.2.tgz#e83e3a7e3f300b34cb9d87f615fa0cbf357690ee"
@@ -41,6 +24,11 @@ bytes@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-3.0.0.tgz#d32815404d689699f85a4ea4fa8755dd13a96048"
   integrity sha512-pMhOfFDPiv9t5jjIXkHosWmkSyQbvsgEVNkz0ERHbuLh2T/7j4Mqqpz523Fe8MVY89KC6Sh/QfS2sM+SjgFDcw==
+
+colors-cli@^1.0.26:
+  version "1.0.32"
+  resolved "https://registry.yarnpkg.com/colors-cli/-/colors-cli-1.0.32.tgz#3b7c13198412ee4869f63265d2b42a8d369a89d1"
+  integrity sha512-zHMwyBeZ1PEo1sm11JA2SFw5/+5AB0aRBmQZbO8qOZ0bCeDEpoJDe+UZbG/oICiQ9/m6vLBd/3GASAP9GfSkwA==
 
 commander@^11.1.0:
   version "11.1.0"
@@ -84,6 +72,13 @@ import-local@^3.1.0:
   dependencies:
     pkg-dir "^4.2.0"
     resolve-cwd "^3.0.0"
+
+loading-cli@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/loading-cli/-/loading-cli-1.1.1.tgz#e34d78185acb66e28a850f1f1ff45586b92a855f"
+  integrity sha512-FAPjdC4M9hDBcnRbYBym4/DZjQ9WIEVaj1+lM3YUJvcZU3EhtowOP5vrRnjZ92V4KvaAqvoaSP+dv0N2jRFrVw==
+  dependencies:
+    colors-cli "^1.0.26"
 
 locate-path@^5.0.0:
   version "5.0.0"
@@ -193,7 +188,13 @@ serve-handler@^6.1.5:
     path-to-regexp "2.2.1"
     range-parser "1.2.0"
 
-user@^0.0.0:
-  version "0.0.0"
-  resolved "https://registry.yarnpkg.com/user/-/user-0.0.0.tgz#f27f1b23fc511f2a8efa40db55cfba123824e02a"
-  integrity sha512-eRNM5isOvr6aEFAGi1CqAkmLkYxW2NJ5ThhbD+6IJXYKM1mo7Gtxx4mQIveHz/5K3p/SVnlW9k17ETn+QAu8IQ==
+ssl-dev@../../:
+  version "0.0.8-dev"
+  dependencies:
+    "@commander-js/extra-typings" "^11.1.0"
+    commander "^11.1.0"
+    dotenv "^16.3.1"
+    import-local "^3.1.0"
+    loading-cli "^1.1.1"
+    prettier "^3.1.0"
+    serve-handler "^6.1.5"
