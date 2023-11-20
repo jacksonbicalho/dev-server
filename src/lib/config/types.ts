@@ -1,4 +1,4 @@
-type ConfigType = {
+interface IConfigType {
   rootApp?: string;
   fileType?: 'json' | 'js' | undefined;
   fileName: 'https.config.js' | 'https.config.json' | string;
@@ -9,13 +9,13 @@ type ConfigType = {
   renderSingle?: boolean | undefined;
   cleanUrls?: boolean | string[];
   rewrites: { source: string; destination: string }[];
-};
+}
 
-type confirmSetupType = {
+interface IConfirmSetupType {
   createConfig: boolean;
-};
+}
 
-declare module '@config/type' {
-  export type config = ConfigType;
-  export type createConfig = confirmSetupType;
+declare module '@config' {
+  export type ConfigType = IConfigType;
+  export type ConfirmSetupType = IConfirmSetupType;
 }

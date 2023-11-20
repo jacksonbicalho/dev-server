@@ -46,12 +46,6 @@ export const Questions = async (): Promise<DefaultQuestionsType[]> => [
     type: 'select'
   },
   {
-    initial: (prev) => `https.config.${prev}`,
-    message: 'qual o nomde do arquivo deseja usar ?',
-    name: 'fileName',
-    type: 'text'
-  },
-  {
     initial: 'localhost',
     message: 'qual o nomde do domínio deseja usar ?',
     name: 'publicDomain',

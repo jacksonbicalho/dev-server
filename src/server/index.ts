@@ -1,5 +1,6 @@
 import handler from 'serve-handler';
 import https, { RequestOptions } from 'node:https';
+import { ConfigType } from '@config';
 
 export const server = (options: RequestOptions, config: ConfigType) =>
   https.createServer(options, (request, response) => {
