@@ -1,7 +1,7 @@
 interface IConfigType {
   rootApp?: string;
   fileType?: 'json' | 'js' | undefined;
-  fileName: 'https.config.js' | 'https.config.json' | string;
+  fileName: 'https.config.js' | 'https.config.json';
   publicDomain: string;
   contenPublic: string;
   webPort: string | number;
@@ -15,7 +15,5 @@ interface IConfirmSetupType {
   createConfig: boolean;
 }
 
-declare module '@config' {
-  export type ConfigType = IConfigType;
-  export type ConfirmSetupType = IConfirmSetupType;
-}
+export type ConfigType = IConfigType;
+export type ConfirmSetupType = IConfirmSetupType;

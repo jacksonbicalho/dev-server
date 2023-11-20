@@ -43,7 +43,7 @@ export const Questions = async (): Promise<DefaultQuestionsType[]> => [
     initial: 0,
     message: 'Qual modelo de arquivo deseja criar ?',
     name: 'fileType',
-    type: 'select'
+    type: 'select',
   },
   {
     initial: 'localhost',

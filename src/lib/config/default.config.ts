@@ -1,4 +1,4 @@
-import { ConfigType } from '@config';
+import { ConfigType } from '../config';
 import { path } from '../../utils';
 
 type isObjectArrayType =
