@@ -29,9 +29,9 @@ const cli = (command: string, args?: string[]) => {
 
 (async () => {
   process.argv.slice(2);
-  const program = createCommand('https-dev');
+  const program = createCommand('ssldev');
   program
-    .name('https-dev')
+    .name('ssldev')
     .usage('command [options]')
     .version('0.1.0')
     .command('setup', { isDefault: true })

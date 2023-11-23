@@ -1,4 +1,4 @@
-import { path } from '../../utils';
+import { fileExists, path, readFile } from '../../utils';
 
 interface IConfigType {
   rootApp?: string;
@@ -31,13 +31,13 @@ type isObjectArrayType =
     }[];
 
 const defaultConfigBase: ConfigType = {
-  fileType: 'js' || 'json' || undefined,
-  fileName: 'https.config.js' || 'https.config.json' || 'string',
+  fileType: 'js' || 'json',
+  fileName: 'https.config.js' || 'https.config.json',
   rootApp: process.env.PWD || __dirname,
-  publicDomain: process.env.PUBLIC_DOMAIN || 'localhost',
-  contenPublic: process.env.CONTEN_PUBLIC || 'public',
-  webPort: process.env.WEB_PORT || 8888,
-  keysPath: process.env.KEYS_PATH || 'ssl',
+  publicDomain: 'localhost',
+  contenPublic: 'public',
+  webPort: 8888,
+  keysPath: 'ssl',
   renderSingle: false,
   cleanUrls: ['/**'],
   rewrites: [{ source: 'app/**', destination: '/index.html' }]
@@ -76,7 +76,17 @@ class DefaultConfig {
       `${appConfiguration.rootApp}`,
       appConfiguration.fileName
     );
-    return require(appFile);
+
+    let appConfig = JSON.parse(JSON.stringify(defaultConfigBase));
+
+    if (fileExists(appFile)) {
+      appConfig = JSON.parse(JSON.stringify(readFile(appFile)));
+    }
+    appConfig = JSON.parse(JSON.stringify(this.getDefaultConfig()));
+
+    return typeof appConfig == 'object'
+      ? appConfig
+      : JSON.parse(JSON.stringify(appConfig));
   }
 
   public isObjectArray = (str: isObjectArrayType): string | string[] => {

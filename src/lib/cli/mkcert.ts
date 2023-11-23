@@ -13,7 +13,8 @@ export const options = program
   .parse()
   .opts();
 
-export const mkcert = () => {
+const mkcert = () => {
+
   const mkcertSh = path.resolve(__dirname, 'mkcert.sh');
   execFile(
     `${mkcertSh}`,
@@ -23,7 +24,7 @@ export const mkcert = () => {
         if (error.code == 'EACCES') {
           console.warn('você precisará usar sudo para criar o par de chaves');
           exec(
-            `sudo chmod +x ${error.path} && yarn ssl mkcert`,
+            `sudo chmod +x ${error.path} && yarn ssldev mkcert`,
             (error, stdout, stderr) => {
               if (error) {
                 console.log(`error: ${error.message}`);
@@ -48,3 +49,4 @@ export const mkcert = () => {
   );
 };
 
+exports.mkcert = mkcert();

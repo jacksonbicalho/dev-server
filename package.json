@@ -1,6 +1,6 @@
 {
   "name": "ssldev",
-  "version": "0.0.2-dev",
+  "version": "0.0.3-dev",
   "description": "Servidor https de desenvolvimento",
   "author": "Jackson Bicalho",
   "license": "MIT",
@@ -16,7 +16,7 @@
   ],
   "main": "./dist/index.js",
   "bin": {
-    "ssl": "dist/bin/ssl.js"
+    "ssldev": "dist/bin/ssldev.js"
   },
   "scripts": {
     "build": "rm -rf dist && tsc -p tsconfig.build.json && cp -r src/lib/cli/mkcert.sh ./dist/lib/cli/mkcert.sh",

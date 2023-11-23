@@ -9,8 +9,7 @@ export const writeConfigJs = (config: prompts.Answers<string>) => {
     'confirmDefault',
     'fileType',
     'fileName',
-    'createConfig',
-    'rootApp'
+    'createConfig'
   ];
 
   const file = path.resolve(`${config.rootApp}`, config.fileName);
