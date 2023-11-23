@@ -1,7 +1,7 @@
 #! /usr/bin/env node --harmony
 
 import { defaultConfig, Questions, writeConfigJs } from '../config';
-import { prompts, kleur} from '../../utils';
+import { prompts, kleur } from '../../utils';
 
 class ConfigTable {
   constructor(
@@ -59,4 +59,5 @@ class ConfigTable {
   if (config.fileType == 'js') {
     writeConfigJs(config);
   }
+
 })();

@@ -1,18 +1,18 @@
 {
-  "name": "ssl-dev",
-  "version": "0.0.1-dev",
+  "name": "ssldev",
+  "version": "0.0.2-dev",
   "description": "Servidor https de desenvolvimento",
   "author": "Jackson Bicalho",
   "license": "MIT",
-  "homepage": "https://github.com/jacksonbicalho/ssl-dev",
+  "homepage": "https://github.com/jacksonbicalho/ssldev",
   "files": [
-    "dist",
-    "bin",
+    "dist/",
+    "bin/",
     "lib",
-    "cli",
-    "server",
-    "utils",
-    "config"
+    "server/",
+    "utils/",
+    "index.ts",
+    "main.ts"
   ],
   "main": "./dist/index.js",
   "bin": {

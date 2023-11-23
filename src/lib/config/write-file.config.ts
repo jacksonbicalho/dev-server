@@ -17,7 +17,7 @@ export const writeConfigJs = (config: prompts.Answers<string>) => {
   cleanConfig.map((conf) => delete config[conf]);
 
   const template = `
-    const ssl = require('ssl-dev');
+    const ssl = require('ssldev');
     // ## https://www.npmjs.com/package/serve-handler#options
     const config = ssl.defaultConfig.getDefaultConfig(#CONFIG#);
     module.exports = config

@@ -13,7 +13,7 @@ export const options = program
   .parse()
   .opts();
 
-const mkcert = () => {
+export const mkcert = () => {
   const mkcertSh = path.resolve(__dirname, 'mkcert.sh');
   execFile(
     `${mkcertSh}`,
@@ -47,4 +47,4 @@ const mkcert = () => {
     }
   );
 };
-module.exports = mkcert();
+

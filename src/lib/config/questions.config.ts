@@ -1,7 +1,6 @@
 import path from 'path';
 import { PromptObject } from 'prompts';
 import { defaultConfig } from './default.config';
-import { fileExists } from '../../utils';
 
 const config = defaultConfig.getDefaultConfig();
 
@@ -9,45 +8,7 @@ type DefaultQuestionsType = {
   msg?: string;
 } & PromptObject;
 
-
-
-const checkConfigFileExist = () => {
-  const appDir = process.env.INIT_CWD;
-  const configFileName = ['https.config.js', 'https.config.json'];
-  const fileExist = configFileName.filter((file) =>
-    fileExists(path.resolve(`${appDir}`, file))
-  );
-  const choices: { title: string; value: number }[] = [{
-    title: 'excluir os arquivos e criar nova configuração',
-    value: 0
-  }];
-  fileExist.map(
-    (file: string, index) => (
-      (choices.push({title: `Manter este arquivo ${file} ?`, value: index+1}))
-    )
-  )
-  return {fileExist, choices};
-};
-
-const {fileExist, choices} = checkConfigFileExist();
-
-
 export const Questions = async (): Promise<DefaultQuestionsType[]> => [
-  {
-    choices: choices,
-    initial: 0,
-    message:
-      fileExist.length > 0
-        ?
-`Você já possui arquivos de configuração em sua aplicação'\n
-Arquivos encontrados: [${fileExist.join(' | ')}]\n
-Para continuar é pnecessário selenar uma das opções:`
-        :
-        '',
-    name: 'checkConfigFileExist',
-    type: fileExist.length > 0 ? 'select' : null,
-  },
-
   {
     type: 'toggle',
     name: 'createConfig',
@@ -82,7 +43,7 @@ Para continuar é pnecessário selenar uma das opções:`
     initial: 0,
     message: 'Qual modelo de arquivo deseja criar ?',
     name: 'fileType',
-    type: 'select',
+    type: 'select'
   },
   {
     initial: 'localhost',
