@@ -1,16 +1,16 @@
-# `ssl-dev` - Servidor https para ser usado durante desenvolvimento
+# `ssldev` - Servidor https para ser usado durante desenvolvimento
 
-`ssl-dev` é uma ferramenta simples de ser usada que resolve principalmente as dificuldades de lidar com desenvolvimento de PWAs.
+`ssldev` é uma ferramenta simples de ser usada que resolve principalmente as dificuldades de lidar com desenvolvimento de PWAs.
 
 ## Instalação
 
 ``` bash
-npm install --save-dev ssl-dev
+npm install --save-dev ssldev
 ```
 
 Ou
 ``` bash
-yarn add --dev ssl-dev
+yarn add --dev ssldev
 ```
 
 ## Comandos
@@ -18,13 +18,13 @@ yarn add --dev ssl-dev
 Insira em scripts
 ``` json
   "scripts": {
-    "ssl": "npx ssl"
+    "ssldev": "npx ssldev"
   },
 ```
 
 ## Comandos
 
-`ssl` responde aos seguintes comandos:
+`ssldev` responde aos seguintes comandos:
 
 | **Opções**         | **Descrição**
 |:-------------------|:----------------------------
@@ -39,9 +39,5 @@ Insira em scripts
 | `mkcert` [options] | generate ssl keys
 | `help` [command]   | display help for command
 
-## Problema
-Quando você executar `mkcert`, receberá um mensagem de erro de permissão.
-copie o caminho do arquivo /home/user......../mkcert.sh e de de permissão de execução
-
-
-
+## Importante!
+Quando você executar `mkcert`, seerá obriigado digitar umma senha de sudo.

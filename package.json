@@ -1,10 +1,18 @@
 {
   "name": "ssldev",
-  "version": "0.0.3-dev",
+  "version": "0.0.4-dev",
   "description": "Servidor https de desenvolvimento",
-  "author": "Jackson Bicalho",
+  "author": {
+    "name": "Jackson Bicalho",
+    "email": "jacksonbicalho@gmail.com",
+    "url": "https://jacksonbicalho.github.io/"
+  },
   "license": "MIT",
   "homepage": "https://github.com/jacksonbicalho/ssldev",
+  "bugs": {
+    "url": "https://github.com/jacksonbicalho/ssldev/issues",
+    "email": "jacksonbicalho@gmail.com"
+  },
   "files": [
     "dist/",
     "bin/",
