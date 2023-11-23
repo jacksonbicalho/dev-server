@@ -40,4 +40,4 @@ Insira em scripts
 | `help` [command]   | display help for command
 
 ## Importante!
-Quando você executar `mkcert`, seerá obriigado digitar umma senha de sudo.
+Quando você executar `mkcert`, será obrigado a usar uma senha de sudo.
