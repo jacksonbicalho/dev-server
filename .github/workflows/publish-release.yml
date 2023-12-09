@@ -13,4 +13,4 @@ jobs:
       env:
         GH_TOKEN: ${{ github.token }}
       with:
-        title: ${{ github.event.head.tag_message }}
+        title: ${{ github.event.head_commit.message }}
