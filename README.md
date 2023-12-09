@@ -1,5 +1,12 @@
 # `ssldev` - Servidor https para ser usado durante desenvolvimento
 
+
+
+[![Node CI](https://github.com/jacksonbicalho/ssldev/actions/workflows/main.yml/badge.svg)](https://github.com/jacksonbicalho/ssldev/actions/workflows/main.yml)
+
+
+
+
 `ssldev` é uma ferramenta simples de ser usada que resolve principalmente as dificuldades de lidar com desenvolvimento de PWAs.
 
 ## Instalação
