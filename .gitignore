@@ -1,0 +1,15 @@
+.env
+*.pem
+node_modules
+dist
+*.log
+
+*.tgz
+
+
+examples/**/*.config.js
+
+coverage
+
+
+

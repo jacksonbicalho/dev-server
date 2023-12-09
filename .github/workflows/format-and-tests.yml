@@ -1,0 +1,28 @@
+name: Format and Tests
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: ['18.x']
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Create coverage folder
+      run: |
+        mkdir -p ${{ github.workspace }}/coverage
+
+    - uses: actions/setup-node@v3
+      name: Use Node.js ${{ matrix.node-version }}
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: yarn install --frozen-lockfile
+    - run: yarn lint
+    - run: yarn format
+    - run: yarn test
+    - run: yarn test:cov
