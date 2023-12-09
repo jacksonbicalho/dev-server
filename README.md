@@ -1,8 +1,12 @@
-![Coverage Badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/jacksonbicalho/1c329f62b9eedff81b4a2dbe31958c3d/raw/ssldev__heads_master.json)
 
+<br />
+<div align="center" pading=10>
+
+[![Format and Tests](https://github.com/jacksonbicalho/ssldev/actions/workflows/format-and-tests.yml/badge.svg?branch=master)](https://github.com/jacksonbicalho/ssldev/actions/workflows/format-and-tests.yml)
+
+</div>
 
 # `ssldev` - Servidor https para ser usado durante desenvolvimento
-
 
 `ssldev` é uma ferramenta simples de ser usada que resolve principalmente as dificuldades de lidar com desenvolvimento de PWAs.
 
