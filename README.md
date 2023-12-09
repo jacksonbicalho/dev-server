@@ -1,10 +1,15 @@
+<p align="center">
+  <a href="https://badge.fury.io/js/ssldev">
+    <img src="https://badge.fury.io/js/ssldev.svg" alt="npm version" height="25">
+  </a>&nbsp;
+  <a href="https://github.com/jacksonbicalho/ssldev/blob/master/LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="ssldev is released under the MIT license." height="25" />
+  </a>&nbsp;
+  <a href="https://github.com/jacksonbicalho/ssldev/actions/workflows/format-and-tests.yml">
+    <img src="https://github.com/jacksonbicalho/ssldev/actions/workflows/format-and-tests.yml/badge.svg?branch=master" alt="forma and tests" height="25" />
+  </a>&nbsp;
+</p>
 
-<br />
-<div align="center" pading=10>
-
-[![Format and Tests](https://github.com/jacksonbicalho/ssldev/actions/workflows/format-and-tests.yml/badge.svg?branch=master)](https://github.com/jacksonbicalho/ssldev/actions/workflows/format-and-tests.yml)
-
-</div>
 
 # `ssldev` - Servidor https para ser usado durante desenvolvimento
 
