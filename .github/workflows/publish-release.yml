@@ -12,5 +12,5 @@ jobs:
       uses: elgohr/Github-Release-Action@v5
       env:
         GH_TOKEN: ${{ github.token }}
-      # with:
-      #   title: ${{ github.event.head_commit.message }}
+      with:
+        title: ${{ github.event.release.tag_name }}
