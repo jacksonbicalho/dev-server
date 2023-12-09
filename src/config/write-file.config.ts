@@ -1,4 +1,4 @@
-import { writeFile } from '../../utils';
+import { writeFile } from '../utils';
 import path from 'path';
 import prompts from 'prompts';
 import { runCommand } from '../cli/run-command';

@@ -4,19 +4,21 @@
 
 ## Instalação
 
-``` bash
+```bash
 npm install --save-dev ssldev
 ```
 
 Ou
-``` bash
+
+```bash
 yarn add --dev ssldev
 ```
 
 ## Comandos
 
 Insira em scripts
-``` json
+
+```json
   "scripts": {
     "ssldev": "npx ssldev"
   },
@@ -26,18 +28,19 @@ Insira em scripts
 
 `ssldev` responde aos seguintes comandos:
 
-| **Opções**         | **Descrição**
-|:-------------------|:----------------------------
-| `-v --version`     | output the version number
-| `-h --help`        | display help for command
+| **Opções**     | **Descrição**             |
+| :------------- | :------------------------ |
+| `-v --version` | output the version number |
+| `-h --help`    | display help for command  |
 
-| **Comando**        | **Descrição**
-|:-------------------|:----------------------------
-| `-v --version`     | Shows the help dialog
-| `setup`            | generate config file
-| `start`            | start server https
-| `mkcert` [options] | generate ssl keys
-| `help` [command]   | display help for command
+| **Comando**        | **Descrição**            |
+| :----------------- | :----------------------- |
+| `-v --version`     | Shows the help dialog    |
+| `setup`            | generate config file     |
+| `start`            | start server https       |
+| `mkcert` [options] | generate ssl keys        |
+| `help` [command]   | display help for command |
 
 ## Importante!
+
 Quando você executar `mkcert`, será obrigado a usar uma senha de sudo.

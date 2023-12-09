@@ -1,6 +1,6 @@
 import path from 'path';
 import type { PackageJson } from 'types-package-json';
-import { fileExists, readFile } from '../utils';
+import { fileExists, readFile } from '.';
 
 export const getHttpsPackageJson = () => {
   const directories = Object.values(module.paths).flatMap((directory) =>
@@ -10,10 +10,22 @@ export const getHttpsPackageJson = () => {
   directories.map((dir) => {
     const file = path.join('node_modules', dir, 'package.json');
     if (fileExists(file)) {
-      const packageJson = JSON.parse(readFile(file));
+      const packageJson = JSON.parse(
+        readFile(file, {
+          encoding: 'utf-8',
+          flag: 'r'
+        })
+      );
       const index = files.findIndex((f) => f.name === packageJson.name);
       if (index == -1) {
-        files.push(JSON.parse(readFile(file)));
+        files.push(
+          JSON.parse(
+            readFile(file, {
+              encoding: 'utf-8',
+              flag: 'r'
+            })
+          )
+        );
       }
     }
   });

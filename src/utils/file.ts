@@ -11,9 +11,16 @@ export const writeFile = (
   fs.writeFileSync(file, data);
 };
 
-export const readFile = (file: fs.PathOrFileDescriptor) => {
-  return fs.readFileSync(file, {
-    encoding: 'utf8',
-    flag: 'r'
-  });
+type readFileOptions =
+  | {
+      encoding: BufferEncoding;
+      flag?: string | undefined;
+    }
+  | BufferEncoding;
+
+export const readFile = (
+  file: fs.PathOrFileDescriptor,
+  options: readFileOptions
+) => {
+  return fs.readFileSync(file, options);
 };

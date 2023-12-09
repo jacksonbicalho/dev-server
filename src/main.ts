@@ -1,9 +1,10 @@
 import { server } from './server';
 import fs from 'fs';
 import path from 'path';
-import { defaultConfig } from './lib/config';
+import { defaultConfig } from './config';
 
 const appConfig = defaultConfig.getAppConfig();
+
 const rootApp = path.resolve(`${appConfig.rootApp}`);
 const keysPath = path.resolve(rootApp, appConfig.keysPath);
 const publicDomain = appConfig.publicDomain;

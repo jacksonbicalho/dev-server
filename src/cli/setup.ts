@@ -1,7 +1,7 @@
 #! /usr/bin/env node --harmony
 
 import { defaultConfig, Questions, writeConfigJs } from '../config';
-import { prompts, kleur } from '../../utils';
+import { prompts, kleur } from '../utils';
 
 class ConfigTable {
   constructor(
@@ -13,7 +13,7 @@ class ConfigTable {
   }
 }
 
-(async () => {
+export const setup = async () => {
   const questions = await Questions();
 
   const answers = await prompts(questions, {
@@ -59,5 +59,12 @@ class ConfigTable {
   if (config.fileType == 'js') {
     writeConfigJs(config);
   }
+};
 
+(async () => {
+  const args = process.argv[1].split('/');
+  const length = args.length;
+  if (args[length - 1] == 'setup.js') {
+    await setup();
+  }
 })();

@@ -6,14 +6,13 @@ import { program } from '@commander-js/extra-typings';
 import { exec, execFile } from 'child_process';
 import { defaultConfig } from '../config';
 
-const appConfig = defaultConfig.getAppConfig();
-export const options = program
-  .option('-d, --domain <string>', 'specified domain', appConfig.publicDomain)
-  .option('-p, --path <string>', 'specified path', appConfig.keysPath)
-  .parse()
-  .opts();
-
-const mkcert = () => {
+export const mkcert = async () => {
+  const appConfig = defaultConfig.getAppConfig();
+  const options = program
+    .option('-d, --domain <string>', 'specified domain', appConfig.publicDomain)
+    .option('-p, --path <string>', 'specified path', appConfig.keysPath)
+    .parse()
+    .opts();
 
   const mkcertSh = path.resolve(__dirname, 'mkcert.sh');
   execFile(
@@ -49,4 +48,10 @@ const mkcert = () => {
   );
 };
 
-exports.mkcert = mkcert();
+(async () => {
+  const args = process.argv[1].split('/');
+  const length = args.length;
+  if (args[length - 1] == 'mkcert.js') {
+    await mkcert();
+  }
+})();

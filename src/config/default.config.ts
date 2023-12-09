@@ -1,4 +1,4 @@
-import { fileExists, path, readFile } from '../../utils';
+import { fileExists, path } from '../utils';
 
 interface IConfigType {
   rootApp?: string;
@@ -80,9 +80,10 @@ class DefaultConfig {
     let appConfig = JSON.parse(JSON.stringify(defaultConfigBase));
 
     if (fileExists(appFile)) {
-      appConfig = JSON.parse(JSON.stringify(readFile(appFile)));
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      appConfig = require(appFile);
     }
-    appConfig = JSON.parse(JSON.stringify(this.getDefaultConfig()));
+    appConfig = JSON.parse(JSON.stringify(this.getDefaultConfig(appConfig)));
 
     return typeof appConfig == 'object'
       ? appConfig

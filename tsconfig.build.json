@@ -13,11 +13,12 @@
     "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
-    // "declarationDir": "./dist/@types",
+    "declarationDir": "./dist/types",
     "outDir": "./dist",
     "baseUrl": ".",
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "typeRoots": ["node_modules/@types", "./src/types"]
   },
   "include": ["src/**/*"],
   "exclude": ["*.config.js"]
