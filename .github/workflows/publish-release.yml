@@ -13,4 +13,4 @@ jobs:
       env:
         GH_TOKEN: ${{ github.token }}
       with:
-        title: ${{ github.event.issue_comment.comment.body }}
+        title: MyReleaseMessage
