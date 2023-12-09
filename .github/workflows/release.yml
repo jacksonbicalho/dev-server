@@ -1,0 +1,23 @@
+name: Release
+on:
+  pull_request:
+    types:
+      - opened
+    branches:
+      - 'releases/**'
+
+jobs:
+  build:
+    if: success()
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: ['16.x', '18.x']
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: echo
+      run: |
+        echo create Release
