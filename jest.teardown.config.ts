@@ -1,7 +1,9 @@
 import { JestConfigWithTsJest } from 'ts-jest';
 import { readFile, writeFile } from './src/utils/file';
-import { total } from './coverage/coverage-summary.json';
 import path from 'path';
+const coverageSummaryFilePath = path.join(__dirname, 'coverage', 'coverage-summary.json');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const coverageSummaryFile = require(`${coverageSummaryFilePath}`);
 
 type ItensTotals = {
   total: number;
@@ -100,7 +102,7 @@ const teardown = async (
     ?.global as never;
   const totalsConfigured: Totals = getCoverageConfigured(configGlobal);
   const totalsProcessed: Totals = getCoverageProcessed(
-    JSON.parse(JSON.stringify(total))
+    JSON.parse(JSON.stringify(coverageSummaryFile.total))
   );
   const newsTotals: Totals = buildNewsTotals(totalsConfigured, totalsProcessed);
   const jestCoverageConfigPath = path.resolve('./jest.coverage.config.json');
