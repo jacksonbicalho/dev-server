@@ -13,4 +13,4 @@ jobs:
       env:
         GH_TOKEN: ${{ github.token }}
       with:
-        title: MyReleaseMessage
+        title: ${{ github.event.release.tag_name }}
