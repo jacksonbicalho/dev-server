@@ -12,5 +12,6 @@ jobs:
       uses: elgohr/Github-Release-Action@v5
       env:
         GH_TOKEN: ${{ github.token }}
+        INPUT_TITLE: ${{ inputs.title }}
       with:
-        title: MyReleaseMessage
+        title: "${{ INPUT_TITLE }}"
