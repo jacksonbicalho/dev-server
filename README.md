@@ -1,4 +1,4 @@
-[![Node CI](https://github.com/jacksonbicalho/ssldev/actions/workflows/main.yml/badge.svg)](https://github.com/jacksonbicalho/ssldev/actions/workflows/main.yml)
+[![Coverage Badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/jacksonbicalho/1c329f62b9eedff81b4a2dbe31958c3d/raw/ssldev__heads_main.json)]
 
 
 # `ssldev` - Servidor https para ser usado durante desenvolvimento
