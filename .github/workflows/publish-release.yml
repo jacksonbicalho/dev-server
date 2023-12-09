@@ -14,4 +14,4 @@ jobs:
         GH_TOKEN: ${{ github.token }}
         INPUT_TITLE: ${{ inputs.title }}
       with:
-        title: "${{ INPUT_TITLE }}"
+        title: ${{ INPUT_TITLE }}
