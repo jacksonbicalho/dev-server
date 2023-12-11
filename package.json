@@ -24,7 +24,7 @@
     "main.ts",
     "server.ts"
   ],
-  "main": "./dist/index.js",
+  "main": "dist/index.js",
   "bin": {
     "ssldev": "dist/bin/ssldev.js"
   },
@@ -37,7 +37,8 @@
     "test": "jest --config jest/jest.config.ts",
     "test:cov": "rm -rf coverage && jest --coverage --config jest/jest.config.ts",
     "format": "prettier --config .prettierrc 'src/**/*.ts' 'scripts/*.ts' --write",
-    "lint": "eslint . --ext .ts --fix"
+    "lint": "eslint . --ext .ts --fix",
+    "deploy": "yarn npm publish"
   },
   "dependencies": {
     "@commander-js/extra-typings": "^11.1.0",
