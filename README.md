@@ -10,7 +10,6 @@
   </a>&nbsp;
 </p>
 
-
 # `ssldev` - Servidor https para ser usado durante desenvolvimento
 
 `ssldev` é uma ferramenta simples de ser usada que resolve principalmente as dificuldades de lidar com desenvolvimento de PWAs.

@@ -212,7 +212,7 @@ sisteransi@^1.0.5:
   integrity sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==
 
 ssldev@../../:
-  version "0.0.5-dev"
+  version "0.0.7-dev"
   dependencies:
     "@commander-js/extra-typings" "^11.1.0"
     commander "^11.1.0"

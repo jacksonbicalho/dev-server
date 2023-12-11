@@ -14,16 +14,21 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": ".",
     "paths": {
-      "@src/*": ["./src/*"]
+      "@src/*": ["src/*"],
+      "@constants": ["src/constants"],
+      "@scripts": ["scripts/index"],
+      "@utils": ["src/utils/index"],
+      "@utils/*": ["src/utils/*"]
     }
   },
   "compileOnSave": true,
   "include": [
     "src",
+    "scripts",
     "*.ts",
     "**/__tests__/*.spec.ts",
     "__tests__/bin/ssldev.spec.ts",
     "__tests__/server.spec.ts"
-  ],
+, "jest/jest.config.ts", "jest/jest.setup.ts", "jest/jest.teardown.config.ts"  ],
   "exclude": ["node_modules"]
 }

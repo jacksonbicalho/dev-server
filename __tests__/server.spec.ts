@@ -1,7 +1,7 @@
 // requireActual ensures you get the real file
 // instead of an automock
 // we use import type and <typeof ...> to still get types
-import { server } from '../src';
+import { server } from '@src/server';
 
 describe('Server', () => {
   it('toBeDefined', () => {

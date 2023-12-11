@@ -1,16 +1,5 @@
 import fs from 'fs';
 
-export function fileExists(path: fs.PathLike): boolean {
-  return fs.existsSync(path);
-}
-
-export const writeFile = (
-  file: fs.PathOrFileDescriptor,
-  data: string | NodeJS.ArrayBufferView
-) => {
-  fs.writeFileSync(file, data);
-};
-
 type readFileOptions =
   | {
       encoding: BufferEncoding;
@@ -18,9 +7,20 @@ type readFileOptions =
     }
   | BufferEncoding;
 
-export const readFile = (
+export function fileExists(path: fs.PathLike): boolean {
+  return fs.existsSync(path);
+}
+
+export function writeFile(
+  file: fs.PathOrFileDescriptor,
+  data: string | NodeJS.ArrayBufferView
+) {
+  fs.writeFileSync(file, data);
+}
+
+export function readFile(
   file: fs.PathOrFileDescriptor,
   options: readFileOptions
-) => {
+) {
   return fs.readFileSync(file, options);
-};
+}
