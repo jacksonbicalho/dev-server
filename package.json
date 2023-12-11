@@ -1,5 +1,5 @@
 {
-  "name": "ssldev",
+  "name": "@bicalho/ssldev",
   "version": "0.0.11-dev",
   "description": "Servidor https de desenvolvimento",
   "author": {
