@@ -10,6 +10,7 @@ dist
 examples/**/*.config.js
 
 coverage
+act
 
 
 
