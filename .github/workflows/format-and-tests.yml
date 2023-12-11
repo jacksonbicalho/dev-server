@@ -16,7 +16,7 @@ jobs:
         run: |
           mkdir -p ${{ github.workspace }}/coverage
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         name: Use Node.js ${{ matrix.node-version }}
         with:
           node-version: ${{ matrix.node-version }}
@@ -28,12 +28,3 @@ jobs:
       - name: Remove coverage folder
         run: |
           rm -rf ${{ github.workspace }}/coverage
-
-      - name: Build and create package
-        run: |
-          yarn build
-          npm config set _authToken=${{ secrets.NPM_TOKEN }}
-          npm config set _auth ${{ secrets.NPM_TOKEN }}
-          npm config set email=jacksonbicalho@email.com
-          npm pack
-          npm publish
