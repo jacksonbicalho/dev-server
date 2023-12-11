@@ -23,7 +23,7 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn build
       - run: npm pack
-      - run: npm publish
+      - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
