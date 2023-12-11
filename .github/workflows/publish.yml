@@ -23,8 +23,7 @@ jobs:
           token: ${{ secrets.NPM_TOKEN }}
           node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
-          run: |
-            yarn install --frozen-lockfile
-            yarn build
-            npm pack
-            npm publish
+      - run: yarn install --frozen-lockfile
+      - run: yarn build
+      - run: npm pack
+      - run: npm publish
