@@ -1,10 +1,10 @@
-import { SSLDEV_CONFIG_FREEZE } from '../constants';
-import { createCommand, path, getHttpsPackageJson } from '../utils';
+import { CONSTANTS } from '../constants';
+import { createCommand, path, packageJson } from '../utils';
 import { runCommand } from './run-command';
 
 export const sslCli = () => {
   const cli = (command: string, args?: string[]) => {
-    const httpsPackageJson = getHttpsPackageJson();
+    const httpsPackageJson = packageJson.read();
     const scripts = httpsPackageJson.scripts;
     if (scripts === undefined) {
       console.error('file not found');
@@ -56,7 +56,7 @@ export const sslCli = () => {
 (async () => {
   const args = process.argv[1].split('node_modules');
   const length = args.length;
-  if (args[length - 1] == SSLDEV_CONFIG_FREEZE.SSLDEV_BIN) {
+  if (args[length - 1] == CONSTANTS.SSLDEV_BIN) {
     sslCli();
   }
 })();

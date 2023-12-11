@@ -47,6 +47,7 @@ export const setup = async () => {
         console.table(table);
       }
       if (prompt.name == 'confirmDefault' && answer) {
+        console.log('[2023-12-11 01:12:20] >>>>> answer: ', answer);
         if (config.fileType == 'js') {
           writeConfigJs(config);
         }
@@ -56,7 +57,7 @@ export const setup = async () => {
   });
 
   const config = defaultConfig.getDefaultConfig(Object.assign(answers));
-  if (config.fileType == 'js') {
+  if (config.fileType == 'js' && answers.createConfig) {
     writeConfigJs(config);
   }
 };

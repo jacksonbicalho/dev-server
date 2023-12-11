@@ -1,7 +1,13 @@
 import { JestConfigWithTsJest } from 'ts-jest';
-import { readFile, writeFile } from './src/utils/file';
+import { readFile, writeFile } from '../src/utils/file';
 import path from 'path';
-const coverageSummaryFilePath = path.join(__dirname, 'coverage', 'coverage-summary.json');
+import { CONSTANTS } from '../src';
+const coverageSummaryFilePath = path.join(
+  __dirname,
+  '..',
+  CONSTANTS.SSLDEV_COVERAGE_PATCH,
+  'coverage-summary.json'
+);
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const coverageSummaryFile = require(`${coverageSummaryFilePath}`);
 
@@ -67,7 +73,24 @@ const buildNewsTotals = (
   totalsConfigured: Totals,
   totalsProcessed: Totals
 ): Totals => {
-  const newsTotals = {
+
+  let reset = false
+  const args = process.argv.slice(2);
+  if (args.includes('-reset')) {
+    reset = true;
+  }
+
+  let newsTotals:Totals = {} as Totals
+
+  if (reset) {
+    Object.entries(totalsConfigured).map((tot) =>{
+      newsTotals[String(tot[0]) as never] = Math.min(totalsProcessed[tot[0] as never], tot[1]) as never
+    })
+
+    return newsTotals;
+  }
+
+  newsTotals = {
     lines:
       totalsConfigured.lines < totalsProcessed.lines
         ? totalsProcessed.lines
@@ -105,7 +128,7 @@ const teardown = async (
     JSON.parse(JSON.stringify(coverageSummaryFile.total))
   );
   const newsTotals: Totals = buildNewsTotals(totalsConfigured, totalsProcessed);
-  const jestCoverageConfigPath = path.resolve('./jest.coverage.config.json');
+  const jestCoverageConfigPath = path.resolve('./jest/jest.coverage.config.json');
   const dataJestCoverageConfig = readFile(jestCoverageConfigPath, {
     encoding: 'utf-8',
     flag: 'r'

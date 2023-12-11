@@ -3,7 +3,9 @@
     "collectCoverage": true,
     "collectCoverageFrom": [
       "**/*.{js,ts}",
+      "*/*.{js,ts}",
       "!**/node_modules/**",
+      "!**/jest/**",
       "!**/coverage/**",
       "!**/examples/**",
       "!**/dist/**",
@@ -24,16 +26,16 @@
         }
       ]
     ],
-    "coverageDirectory": "./coverage",
+    "coverageDirectory": "<rootDir>/coverage",
     "coverageThreshold": {
       "global": {
-        "lines": 35.68,
-        "statements": 38.52,
-        "functions": 12.5,
-        "branches": 12.28,
+        "lines": 38.93,
+        "statements": 40.76,
+        "functions": 16.66,
+        "branches": 11.47,
         "branchesTrue": 100
       }
     },
-    "globalTeardown": "./jest.teardown.config.ts"
+    "globalTeardown": "./jest/jest.teardown.config.ts"
   }
 }
