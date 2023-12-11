@@ -30,7 +30,6 @@
   },
   "scripts": {
     "build": "rm -rf dist && tsc -p tsconfig.build.json && cp -r src/cli/mkcert.sh ./dist/cli/mkcert.sh",
-    "prepublishOnly": "yarn build && yarn pack",
     "mkcert": "node ./dist/cli/mkcert.js",
     "setup": "node ./dist/cli/setup.js",
     "start": "node ./dist/main.js",
@@ -73,5 +72,8 @@
   },
   "engines": {
     "node": ">=10.13.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }

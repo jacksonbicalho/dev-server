@@ -34,5 +34,8 @@ jobs:
         run: |
           yarn build
           npm config set _authToken=${{ secrets.NPM_TOKEN }}
+          npm config set _auth ${{ secrets.NPM_TOKEN }}
+          npm config set always-auth=true
+          npm config set email=jacksonbicalho@email.com
           npm pack
           npm publish
