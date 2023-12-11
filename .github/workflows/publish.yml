@@ -20,6 +20,7 @@ jobs:
         with:
           node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
+          always-auth: true
       - run: npm install --global  corepack
       - run: npm install
       - run: npm run build
