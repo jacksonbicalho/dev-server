@@ -22,8 +22,11 @@ jobs:
         with:
           node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
-      # - name: Install dependencies and build
-      #   run: yarn build
+      - name: Install dependencies and build
+        run: |
+          yarn install --frozen-lockfile
+          yarn build
+          npm pack
       - name: Publish package on NPM
         run: npm publish
         env:
