@@ -20,14 +20,11 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
+          token: ${{ secrets.NPM_TOKEN }}
           node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
-      - name: Install dependencies and build
-        run: |
-          yarn install --frozen-lockfile
-          yarn build
-          npm pack
-      - name: Publish package on NPM
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          run: |
+            yarn install --frozen-lockfile
+            yarn build
+            npm pack
+            npm publish
