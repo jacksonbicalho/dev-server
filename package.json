@@ -1,6 +1,6 @@
 {
   "name": "ssldev",
-  "version": "0.0.7-dev",
+  "version": "0.0.8-dev",
   "description": "Servidor https de desenvolvimento",
   "author": {
     "name": "Jackson Bicalho",
@@ -72,8 +72,5 @@
   },
   "engines": {
     "node": ">=10.13.0"
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
   }
 }
