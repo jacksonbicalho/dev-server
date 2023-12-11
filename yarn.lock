@@ -1241,6 +1241,11 @@ convert-source-map@^2.0.0:
   resolved "https://registry.yarnpkg.com/convert-source-map/-/convert-source-map-2.0.0.tgz#4b560f649fc4e918dd0ab75cf4961e8bc882d82a"
   integrity sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==
 
+corepack@0.19.0:
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/corepack/-/corepack-0.19.0.tgz#7763f48d2ea897ba23d0eb2c5decd879c098f721"
+  integrity sha512-mG4nu1zM5autGOSxl+rrpbx7+ZBhn3gsgXh0bJQVUg3HOo9RTKQvdj7gmp+CDj5clIySRrnWUtZROGfQPGROyg==
+
 create-jest@^29.7.0:
   version "29.7.0"
   resolved "https://registry.yarnpkg.com/create-jest/-/create-jest-29.7.0.tgz#a355c5b3cb1e1af02ba177fe7afd7feee49a5320"

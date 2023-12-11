@@ -20,9 +20,11 @@ jobs:
         with:
           node-version: '18.x'
           registry-url: https://registry.npmjs.org/
+      - run: yarn add corepack@0.19.0 -G
       - run: yarn install --frozen-lockfile
       - run: yarn build
-      - run: npm ci
+      - run: npm pack
+      - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
