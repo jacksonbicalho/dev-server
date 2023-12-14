@@ -2,15 +2,29 @@
 *.pem
 node_modules
 dist
+
+#logs
+.npm/_logs/
 *.log
 
+#cache
+.cache
+
+
+#pack builds
 *.tgz
 
+#yarn
+.yarn/bin
 
+
+# examples
 examples/**/*.config.js
 
 coverage
-act
+
+.ash_history
+.node_repl_history
 
 
 
