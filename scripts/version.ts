@@ -2,7 +2,7 @@ import { PackageJson } from 'types-package-json';
 import * as semver from 'semver';
 import path from 'path';
 import { packageJson } from '../src/utils/package-json';
-import { CONSTANTS } from '@src/constants';
+import { CONSTANTS } from '../src/constants';
 
 type NewVersionType = {
   release: semver.ReleaseType;

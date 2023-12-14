@@ -1,6 +1,6 @@
 {
   "name": "ssldev",
-  "version": "0.0.12-dev",
+  "version": "0.0.20-dev",
   "description": "Servidor https de desenvolvimento",
   "author": {
     "name": "Jackson Bicalho",
@@ -37,8 +37,7 @@
     "test": "jest --config jest/jest.config.ts",
     "test:cov": "rm -rf coverage && jest --coverage --config jest/jest.config.ts",
     "format": "prettier --config .prettierrc 'src/**/*.ts' 'scripts/*.ts' --write",
-    "lint": "eslint . --ext .ts --fix",
-    "deploy:npm": "yarn build && npm pack && npm publish"
+    "lint": "eslint . --ext .ts --fix"
   },
   "dependencies": {
     "@commander-js/extra-typings": "^11.1.0",
@@ -48,6 +47,7 @@
     "import-local": "^3.1.0",
     "kleur": "^4.1.5",
     "loading-cli": "^1.1.1",
+    "npm": "^10.2.5",
     "prettier": "^3.1.0",
     "prompts": "^2.4.2",
     "serve-handler": "^6.1.5"
