@@ -22,20 +22,17 @@ jobs:
     steps:
 
     - uses: actions/checkout@v4
-    - name: Use Node.js
-      uses: actions/setup-node@v3
+    - name: Install dependencies
+      uses: actions/setup-node@v4
       with:
-        always-auth: true
         node-version: '18.x'
-        registry-url:
-          https://registry.yarnpkg.com
-          https://registry.npmjs.org
+        always-auth: true
+        registry-url: https://registry.yarnpkg.com
 
     - name: Install dependencies
       run: yarn --frozen-lockfile
       env:
         YARN_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Build package
       uses: actions/setup-node@v3
@@ -47,4 +44,8 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
+        always-auth: true
+        registry-url: https://registry.npmjs.org
     - run: yarn test:cov
+    env:
+      NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
