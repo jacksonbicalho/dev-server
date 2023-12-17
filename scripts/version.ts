@@ -41,11 +41,10 @@ export const version = {
 
   clean(version: string): string {
     return String(semver.coerce(version));
-  },
+  }
 };
 
-const run = async () =>{
-
+const run = async () => {
   process.argv.slice(2);
   const program = createCommand('version');
   program
@@ -58,10 +57,10 @@ const run = async () =>{
     .option('-i, --identifier <string>', 'specified identifier')
     .option('-ib, --identifier_base <string>', 'specified identifier_base')
     .action(() => {
-      version.increment(process.argv as never)
+      version.increment(process.argv as never);
     });
   program.parse(process.argv);
-}
+};
 
 (async () => {
   const args = process.argv[1].split('/');

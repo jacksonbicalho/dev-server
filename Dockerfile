@@ -75,9 +75,11 @@ ONBUILD WORKDIR ${DOCKER_WORK_DIR}
 
 ONBUILD COPY . ./
 
+ONBUILD COPY ./docker/*.sh /usr/local/bin/
+ONBUILD RUN chmod -R +x /usr/local/bin/
+ONBUILD RUN command install-dependencies.sh
 
 ONBUILD RUN ls -l \
-  && yarn \
   && ls /usr/local/bin/ \
   && /usr/local/bin/node-prune \
   && chown -R ${DOCKER_USER_NAME}:${DOCKER_USER_NAME} ./
@@ -93,21 +95,19 @@ ONBUILD RUN git config --global user.name "${GIT_CONFIG_USER_NAME}" \
 
 ONBUILD RUN --mount=type=secret,id=npmrc,target=${DOCKER_WORK_DIR}/.npmrc
 
-ONBUILD COPY ./docker/*.sh /usr/local/bin/
-ONBUILD RUN chmod -R +x /usr/local/bin/
-
 ONBUILD ENV NODE_REPL_HISTORY=''
 
 ONBUILD USER ${DOCKER_USER_NAME}
 
 ENTRYPOINT ["docker-entrypoint.sh"]
+
 CMD [ "node" ]
 
 
 #####################################
 # development
 #####################################
-FROM base as development
+FROM base as dev
 ARG DOCKER_LABEL_KEY
 ARG DOCKER_LABEL_VALUE
 ENV DOCKER_LABEL_KEY ${DOCKER_LABEL_KEY}
@@ -129,9 +129,4 @@ ENV YARN_TOKEN ${YARN_TOKEN}
 
 EXPOSE ${SERVER_PORT}
 
-RUN command install-dependencies.sh
-
 CMD [ "node" ]
-
-
-
