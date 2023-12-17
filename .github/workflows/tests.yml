@@ -16,5 +16,5 @@ jobs:
       - run: yarn format
       - run: yarn build
       - run: yarn test:cov
-        # env:
-        #   YARN_TOKEN: ${{ secrets.GH_TOKEN.YARN_TOKEN }}
+        env:
+          YARN_TOKEN: ${{ secrets.GH_TOKEN.YARN_TOKEN }}
