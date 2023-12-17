@@ -7,7 +7,6 @@
       "!**/node_modules/**",
       "!**/jest/**",
       "!**/coverage/**",
-      "!**/examples/**",
       "!**/dist/**",
       "!**/main.ts",
       "!**/*.d.ts",
@@ -29,10 +28,10 @@
     "coverageDirectory": "<rootDir>/coverage",
     "coverageThreshold": {
       "global": {
-        "lines": 38.68,
-        "statements": 40.54,
-        "functions": 16.66,
-        "branches": 11.47,
+        "lines": 39.14,
+        "statements": 41.51,
+        "functions": 21.31,
+        "branches": 11.29,
         "branchesTrue": 100
       }
     },

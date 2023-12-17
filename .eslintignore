@@ -1,7 +1,9 @@
 node_modules
 dist
-examples/**/*.js
 
 # configs
 *.config.js
 jest.setup.ts
+
+#docker
+docker/*.sh

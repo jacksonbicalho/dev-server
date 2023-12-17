@@ -1,16 +1,17 @@
 ARG DOCKER_WORK_DIR_DEFAULT=/usr/src/app
+ARG NODE_VERSION=18.18.2
+ARG YARN_VERSION=1.22.19
+
 
 # #############################
 # # base: build for Base
 # #############################
-FROM node:18-alpine As base
+FROM node:${NODE_VERSION}-alpine As base
 ARG DOCKER_LABEL_KEY
 ARG DOCKER_LABEL_VALUE
 ENV DOCKER_LABEL_KEY ${DOCKER_LABEL_KEY}
 ENV DOCKER_LABEL_VALUE ${DOCKER_LABEL_VALUE}
 LABEL ${DOCKER_LABEL_KEY}=${DOCKER_LABEL_VALUE}
-
-ONBUILD ENV YARN_VERSION 1.22.19
 
 ONBUILD ARG NODE_ENV
 ONBUILD ENV NODE_ENV ${NODE_ENV:-builder}
@@ -20,7 +21,6 @@ ONBUILD ENV DOCKER_USER_UID ${DOCKER_USER_UID:-36891}
 
 ONBUILD ARG DOCKER_USER_NAME ${DOCKER_USER_NAME}
 ONBUILD ENV DOCKER_USER_NAME ${DOCKER_USER_NAME}
-
 
 ONBUILD ARG NPM_TOKEN ${NPM_TOKEN}
 ONBUILD ARG NPM_TOKEN ${NPM_TOKEN}
@@ -36,21 +36,25 @@ ONBUILD COPY \
   yarn.lock* \
   .yarnrc* \
   .npmrc* \
-  npm-shrinkwrap.json* \
-  package-lock.json* \
-  pnpm-lock.yaml* ./
+  ./
+
+ONBUILD RUN rm -rf ./cache
 
 ONBUILD RUN rm -rf /usr/local/bin/yarn \
   && rm -rf /usr/local/bin/yarnpkg \
+  && npm uninstall --loglevel warn --global pnpm \
+  && npm uninstall --loglevel warn --global npm \
   && deluser --remove-home node \
   && apk --no-cache update \
+  && apk --no-cache upgrade \
   && apk add --no-cache \
+  bash \
   make \
   python3 \
-  bash \
   curl \
+  git \
+  && apk add --no-cache \
   --virtual builds-deps \
-  && apk add git \
   && curl -fSLO --compressed "https://yarnpkg.com/downloads/$YARN_VERSION/yarn-v$YARN_VERSION.tar.gz" \
   && tar -xzf yarn-v$YARN_VERSION.tar.gz -C /opt/ \
   && ln -snf /opt/yarn-v$YARN_VERSION/bin/yarn /usr/local/bin/yarn \
@@ -60,13 +64,12 @@ ONBUILD RUN rm -rf /usr/local/bin/yarn \
   && curl -sfL RUN curl -sf https://gobinaries.com/tj/node-prune | bash -s -- -b /usr/local/bin/ \
   && apk del builds-deps \
   && rm -rf /var/cache/apk/* \
-  && addgroup -S ${DOCKER_USER_NAME} -g ${DOCKER_USER_UID} \
-  && adduser -S -G ${DOCKER_USER_NAME} -u ${DOCKER_USER_UID} ${DOCKER_USER_NAME}
+  && addgroup -S ${DOCKER_USER_NAME} -g ${DOCKER_USER_UID}
 
-ONBUILD COPY ./docker/docker-entrypoint.sh /usr/local/bin/
-ONBUILD COPY ./docker/current-version.sh /usr/local/bin/
-ONBUILD RUN chmod +x /usr/local/bin/docker-entrypoint.sh
-ONBUILD RUN chmod +x /usr/local/bin/current-version.sh
+ONBUILD RUN adduser -S -G ${DOCKER_USER_NAME} -u ${DOCKER_USER_UID} ${DOCKER_USER_NAME} \
+ --shell /bin/bash \
+ --home /home/${DOCKER_USER_NAME} \
+ -k /etc/skel
 
 ONBUILD WORKDIR ${DOCKER_WORK_DIR}
 
@@ -79,22 +82,26 @@ ONBUILD RUN ls -l \
   && /usr/local/bin/node-prune \
   && chown -R ${DOCKER_USER_NAME}:${DOCKER_USER_NAME} ./
 
-ONBUILD USER ${DOCKER_USER_NAME}
-
 ONBUILD ENV GIT_CONFIG_USER_NAME ${GIT_CONFIG_USER_NAME}
 ONBUILD ENV GIT_CONFIG_USER_NAME ${GIT_CONFIG_USER_NAME}
 
 ONBUILD ENV GIT_CONFIG_USER_EMAIL ${GIT_CONFIG_USER_EMAIL}
 ONBUILD ENV GIT_CONFIG_USER_EMAIL ${GIT_CONFIG_USER_EMAIL}
-
 
 ONBUILD RUN git config --global user.name "${GIT_CONFIG_USER_NAME}" \
   && git config --global user.email "${GIT_CONFIG_USER_EMAIL}"
 
-ONBUILD RUN --mount=type=secret,id=npmrc,target=${HOME}/.npmrc
+ONBUILD RUN --mount=type=secret,id=npmrc,target=${DOCKER_WORK_DIR}/.npmrc
 
-ONBUILD RUN yarn --skip-integrity-check --network-concurrency 1 --frozen-lockfile
+ONBUILD COPY ./docker/*.sh /usr/local/bin/
+ONBUILD RUN chmod -R +x /usr/local/bin/
 
+ONBUILD ENV NODE_REPL_HISTORY=''
+
+ONBUILD USER ${DOCKER_USER_NAME}
+
+ENTRYPOINT ["docker-entrypoint.sh"]
+CMD [ "node" ]
 
 
 #####################################
@@ -106,9 +113,6 @@ ARG DOCKER_LABEL_VALUE
 ENV DOCKER_LABEL_KEY ${DOCKER_LABEL_KEY}
 ENV DOCKER_LABEL_VALUE ${DOCKER_LABEL_VALUE}
 LABEL ${DOCKER_LABEL_KEY}=${DOCKER_LABEL_VALUE}
-
-RUN git config --global user.email "jacksonbicalho@gmail.com" \
-  && git config --global user.name "Jackson Bicalho"
 
 ENV NODE_ENV=development
 
@@ -125,6 +129,9 @@ ENV YARN_TOKEN ${YARN_TOKEN}
 
 EXPOSE ${SERVER_PORT}
 
-ENTRYPOINT ["docker-entrypoint.sh"]
+RUN command install-dependencies.sh
+
+CMD [ "node" ]
+
 
 

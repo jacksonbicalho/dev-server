@@ -27,7 +27,7 @@ services:
     image: ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
     secrets:
       - npmrc
-    command: sh -c "yarn test:cov && yarn build && yarn pack && yarn publish --new-version $(./docker/current-version.sh)"
+    # command: sh -c "yarn test:cov && yarn build && yarn pack && yarn publish --new-version $(./docker/current-version.sh)"
 
     volumes:
       - ./:${DOCKER_WORK_DIR}
@@ -42,7 +42,7 @@ services:
 networks:
   _network:
     driver: bridge
-    name: ${DOCKER_IMAGE_NAME}_network
+    name: ${APP_NAME}_network
     ipam:
       config:
         - subnet: 12.11.1.0/24

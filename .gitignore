@@ -18,9 +18,6 @@ dist
 .yarn/bin
 
 
-# examples
-examples/**/*.config.js
-
 coverage
 
 .ash_history

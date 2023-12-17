@@ -24,6 +24,8 @@ const jestConfig: JestConfigWithTsJest = {
   moduleFileExtensions: ['js', 'json', 'ts'],
   setupFiles: ['./jest/jest.setup.ts'],
   detectOpenHandles: true,
+  cache: false,
+  testPathIgnorePatterns: ['helpers.ts']
 };
 
 const args = process.argv.slice(2);
