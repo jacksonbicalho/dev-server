@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
 
-# This script does `yarn install` if a `yarn.lock` file is present, otherwise `npm install`
-
 set -e
 
-rm -rf node_modules
-rm -rf dist
+rm -rf ${DOCKER_WORK_DIR}/node_modules \
+rm -rf ${DOCKER_WORK_DIR}/dist
 
 
 if [[ -n "${FAIL_ON_DIRTY_LOCKFILE}" ]]; then

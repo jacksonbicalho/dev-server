@@ -20,6 +20,7 @@ services:
         - NPM_TOKEN=${NPM_TOKEN}
         - YARN_TOKEN=${YARN_TOKEN}
         - TARGET=${TARGET}
+        - NODE_ENV=${NODE_ENV}
         - GIT_CONFIG_USER_NAME=${GIT_CONFIG_USER_NAME}
         - GIT_CONFIG_USER_EMAIL=${GIT_CONFIG_USER_EMAIL}
 
@@ -27,7 +28,6 @@ services:
     image: ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
     secrets:
       - npmrc
-    # command: sh -c "yarn test:cov && yarn build && yarn pack && yarn publish --new-version $(./docker/current-version.sh)"
 
     volumes:
       - ./:${DOCKER_WORK_DIR}
