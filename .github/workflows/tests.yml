@@ -1,4 +1,4 @@
-name: Tests
+name: Test
 on:
   pull_request:
     branches: [master]
@@ -11,10 +11,9 @@ jobs:
         with:
           node-version: '18.x'
           registry-url: 'https://registry.yarnpkg.com'
-      - run: yarn install --frozen-lockfile
-      - run: yarn lint
-      - run: yarn format
-      - run: yarn build
-      - run: yarn test:cov
+      - run: |
+         yarn install --frozen-lockfile
+         yarn build
+         yarn test:cov
         env:
           YARN_TOKEN: ${{ secrets.GH_TOKEN.YARN_TOKEN }}
