@@ -1,5 +1,6 @@
-import { version } from '@scripts';
-import { packageJson } from '@src/utils';
+import { describe, it, expect } from './helpers';
+import { version } from '../scripts';
+import { packageJson } from '../src/utils';
 
 describe('scripts', () => {
   describe('version', () => {

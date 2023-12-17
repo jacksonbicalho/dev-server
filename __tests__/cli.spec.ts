@@ -1,5 +1,5 @@
+import { describe, it, expect } from './helpers';
 import { mkcert, runCommand, setup } from '../src/cli';
-import { describe, it, expect } from '@jest/globals';
 
 describe('cli', () => {
   // it('should cli toBeDefined', () => {

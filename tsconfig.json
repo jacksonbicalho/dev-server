@@ -39,10 +39,11 @@
     "src",
     "scripts",
     "*.ts",
-    "**/__tests__/*.spec.ts",
+    "__tests__",
     "jest"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "__tests__/*.ts"
   ]
 }
