@@ -20,11 +20,28 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
+
+    - uses: actions/checkout@v4
+    - name: Use Node.js
+      uses: actions/setup-node@v3
+      with:
+        always-auth: true
+        node-version: '18.x'
+        registry-url: https://registry.yarnpkg.com
+
+    - name: Install dependencies
+      run: yarn --frozen-lockfile
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.YARN_TOKEN }}
+
+    - name: Build package
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'yarn'
     - run: yarn build
+
+    - name: Test package
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
     - run: yarn test:cov
