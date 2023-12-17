@@ -62,10 +62,10 @@ const run = async () => {
   program.parse(process.argv);
 };
 
-(async () => {
-  const args = process.argv[1].split('/');
-  const length = args.length;
-  if (args[length - 1] == 'version') {
-    await run();
-  }
-})();
+// (async () => {
+//   const args = process.argv[1].split('/');
+//   const length = args.length;
+//   if (args[length - 1] == 'version') {
+//     await run();
+//   }
+// })();

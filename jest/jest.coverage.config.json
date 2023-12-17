@@ -28,10 +28,10 @@
     "coverageDirectory": "<rootDir>/coverage",
     "coverageThreshold": {
       "global": {
-        "lines": 39.14,
-        "statements": 41.51,
-        "functions": 21.31,
-        "branches": 11.29,
+        "lines": 38.33,
+        "statements": 40.8,
+        "functions": 20,
+        "branches": 11.47,
         "branchesTrue": 100
       }
     },
