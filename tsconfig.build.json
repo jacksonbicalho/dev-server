@@ -19,5 +19,5 @@
     "forceConsistentCasingInFileNames": true
   },
   "include": ["src/**/*"],
-  "exclude": ["*.config.js"]
+  "exclude": ["*.config.js", "docker"]
 }
