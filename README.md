@@ -6,9 +6,10 @@
     <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="ssldev is released under the MIT license." height="25" />
   </a>&nbsp;
   <a href="https://github.com/jacksonbicalho/ssldev/actions/workflows/tests.yml">
-    <img src="https://github.com/jacksonbicalho/ssldev/actions/workflows/tests.yml/badge.svg?branch=master" alt="format and tests" height="25" />
+    <img src="https://github.com/jacksonbicalho/ssldev/actions/workflows/tests.yml/badge.svg?event=pull_request" alt="format and tests" height="25" />
   </a>&nbsp;
 </p>
+
 
 
 # `ssldev` - Servidor https para ser usado durante desenvolvimento
