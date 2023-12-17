@@ -130,3 +130,26 @@ ENV YARN_TOKEN ${YARN_TOKEN}
 EXPOSE ${SERVER_PORT}
 
 CMD [ "node" ]
+
+#####################################
+# development
+#####################################
+FROM base as publish
+ARG DOCKER_LABEL_KEY
+ARG DOCKER_LABEL_VALUE
+ENV DOCKER_LABEL_KEY ${DOCKER_LABEL_KEY}
+ENV DOCKER_LABEL_VALUE ${DOCKER_LABEL_VALUE}
+LABEL ${DOCKER_LABEL_KEY}=${DOCKER_LABEL_VALUE}
+
+ENV NODE_ENV=production
+
+ARG NPM_TOKEN
+ENV NPM_TOKEN ${NPM_TOKEN}
+
+ARG YARN_TOKEN
+ENV YARN_TOKEN ${YARN_TOKEN}
+ENV YARN_TOKEN ${YARN_TOKEN}
+
+EXPOSE ${SERVER_PORT}
+
+CMD [ "yarn" "publish --access public --new-version ${HOME}/docker/current-version.sh" ]
