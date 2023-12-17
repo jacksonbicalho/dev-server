@@ -27,12 +27,15 @@ jobs:
       with:
         always-auth: true
         node-version: '18.x'
-        registry-url: https://registry.yarnpkg.com
+        registry-url:
+          https://registry.yarnpkg.com
+          https://registry.npmjs.org
 
     - name: Install dependencies
       run: yarn --frozen-lockfile
       env:
         YARN_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Build package
       uses: actions/setup-node@v3
