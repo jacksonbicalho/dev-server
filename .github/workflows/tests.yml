@@ -1,5 +1,4 @@
 name: Tests
-
 on:
   push:
     branches:
@@ -16,7 +15,7 @@ jobs:
     steps:
     - name: 'Create env file'
       run: |
-        echo "${{ secrets.ENV_FILE }}" > .env
+        echo "${{ secrets.GH_TOKEN.ENV_FILE }}" > .env
 
     - name: Checkout
       uses: actions/checkout@v1
