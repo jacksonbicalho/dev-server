@@ -12,7 +12,7 @@ jobs:
           node-version: '18.x'
           registry-url: 'https://registry.yarnpkg.com'
       - run: |
-         yarn install --frozen-lockfile
+         yarn install --production=false --frozen-lockfile
          yarn build
          yarn test:cov
         env:
