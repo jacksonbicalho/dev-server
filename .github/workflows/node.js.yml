@@ -32,7 +32,7 @@ jobs:
     - name: Install dependencies
       run: yarn --frozen-lockfile
       env:
-        NODE_AUTH_TOKEN: ${{ secrets.YARN_TOKEN }}
+        YARN_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Build package
       uses: actions/setup-node@v3
