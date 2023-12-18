@@ -12,6 +12,8 @@ jobs:
       # Output build artifacts to /github/workspace on the container.
       - name: Containerized Build
         uses: jacksonbicalho/hello-world-docker-action@master
+        with:
+          dockerfile: ${{ github.workspace }}/Dockerfile
 
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v3
