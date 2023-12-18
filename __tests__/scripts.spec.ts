@@ -21,7 +21,6 @@ describe('scripts', () => {
         expect(version.current).toBeDefined();
       });
 
-
       it('should return current Version', () => {
         readMock.mockReturnValue({
           version: '0.0.100-dev'
