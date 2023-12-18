@@ -43,7 +43,7 @@ ONBUILD RUN rm -rf ./cache
 ONBUILD RUN rm -rf /usr/local/bin/yarn \
   && rm -rf /usr/local/bin/yarnpkg \
   && npm uninstall --loglevel warn --global pnpm \
-  && npm uninstall --loglevel warn --global npm \
+  # && npm uninstall --loglevel warn --global npm \
   && deluser --remove-home node \
   && apk --no-cache update \
   && apk --no-cache upgrade \
