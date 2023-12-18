@@ -3,15 +3,18 @@ on:
     branches:
       - docker-action
 jobs:
-  hello_world_job:
+  build:
     runs-on: ubuntu-latest
-    name: A job to say hello
     steps:
-      - name: Hello world action step
-        id: hello
-        uses: actions/hello-world-docker-action@v2
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Output build artifacts to /github/workspace on the container.
+      - name: Containerized Build
+        uses: jacksonbicalho/hello-world-docker-action@v0.0.1-dev
+
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v3
         with:
-          who-to-greet: 'Mona the Octocat'
-      # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+          name: workspace_artifacts
+          path: ${{ github.workspace }}
