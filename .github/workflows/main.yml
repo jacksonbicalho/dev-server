@@ -6,17 +6,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      # Output build artifacts to /github/workspace on the container.
-      - name: Containerized Build
-        uses: jacksonbicalho/hello-world-docker-action@master
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          dockerfile: ${{ github.workspace }}/Dockerfile
-
-      - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: workspace_artifacts
-          path: ${{ github.workspace }}
+          node-version: '18.x'
+          registry-url: 'https://registry.yarnpkg.com'
+      - run: |
+         yarn install --production=false --frozen-lockfile
+         yarn build
+         yarn pack
+         yarn publish
+        env:
+          YARN_TOKEN: ${{ secrets.GH_TOKEN.YARN_TOKEN }}s
