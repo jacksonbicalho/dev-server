@@ -24,7 +24,7 @@ services:
         - GIT_CONFIG_USER_NAME=${GIT_CONFIG_USER_NAME}
         - GIT_CONFIG_USER_EMAIL=${GIT_CONFIG_USER_EMAIL}
 
-    container_name: ${APP_NAME}-${NODE_ENV}
+    container_name: ${APP_NAME}-${NODE_ENV}-${TARGET}
     image: ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
     secrets:
       - npmrc

@@ -13,7 +13,7 @@ yarn install --frozen-lockfile \
   && rm -rf *.tgz \
   && yarn test:cov \
   && yarn build \
-  && npm pack
+  && npm pack \
   && yarn publish --new-version ${CURRENT_VERSION}
 
  exit 0;

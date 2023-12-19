@@ -32,7 +32,7 @@ Status|File                   | % Stmts | % Branch | % Funcs | % Lines | Uncover
 🔴|&nbsp;&nbsp;[write-file.config.ts](src/config/write-file.config.ts)|   31.25 |      100 |       0 |   28.57 |[7-34](src/config/write-file.config.ts#L7-L34)
 🔴|&nbsp;src/utils|   47.91 |        0 |       0 |   44.18 |                       
 🟢|&nbsp;&nbsp;[common.ts](src/utils/common.ts)|     100 |      100 |       0 |     100 |
-🟡|&nbsp;&nbsp;[file.ts](src/utils/file.ts)|   55.55 |      100 |       0 |   55.55 |[11](src/utils/file.ts#L11),[18](src/utils/file.ts#L18),[24](src/utils/file.ts#L24),[31](src/utils/file.ts#L31)
+🟡|&nbsp;&nbsp;[file.ts](src/utils/file.ts)|   55.55 |      100 |       0 |   55.55 |[11](src/utils/file.ts#L11),[18](src/utils/file.ts#L18),[21](src/utils/file.ts#L21),[28](src/utils/file.ts#L28)
 🟢|&nbsp;&nbsp;[index.ts](src/utils/index.ts)|   83.33 |      100 |       0 |      80 |[15](src/utils/index.ts#L15)
 🔴|&nbsp;&nbsp;[package-json.ts](src/utils/package-json.ts)|      20 |        0 |       0 |   20.83 |[9-53](src/utils/package-json.ts#L9-L53)
 ## README 
