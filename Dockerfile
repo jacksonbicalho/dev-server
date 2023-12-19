@@ -142,9 +142,9 @@ EXPOSE ${SERVER_PORT}
 
 CMD [ "node" ]
 
-#####################################
+##################################
 # development
-#####################################
+##################################
 FROM base as publish
 ARG DOCKER_LABEL_KEY
 ARG DOCKER_LABEL_VALUE
