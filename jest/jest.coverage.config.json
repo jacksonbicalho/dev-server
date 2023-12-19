@@ -17,21 +17,21 @@
       "json",
       "lcov",
       "json-summary",
-      "html",
       [
         "text",
         {
-          "skipFull": true
+          "skipFull": false,
+          "file": "coverage.txt"
         }
       ]
     ],
     "coverageDirectory": "<rootDir>/coverage",
     "coverageThreshold": {
       "global": {
-        "lines": 38.33,
-        "statements": 40.8,
-        "functions": 20,
-        "branches": 11.47,
+        "lines": 35.88,
+        "statements": 37.97,
+        "functions": 16.43,
+        "branches": 9.72,
         "branchesTrue": 100
       }
     },

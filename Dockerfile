@@ -63,10 +63,20 @@ ONBUILD RUN rm -rf /usr/local/bin/yarn \
   && yarn --version \
   && curl -sfL RUN curl -sf https://gobinaries.com/tj/node-prune | bash -s -- -b /usr/local/bin/ \
   && apk del builds-deps \
-  && rm -rf /var/cache/apk/* \
-  && addgroup -S ${DOCKER_USER_NAME} -g ${DOCKER_USER_UID}
+  && rm -rf /var/cache/apk/*
 
-ONBUILD RUN adduser -S -G ${DOCKER_USER_NAME} -u ${DOCKER_USER_UID} ${DOCKER_USER_NAME} \
+ONBUILD RUN mkdir -p /etc/skel/
+
+ONBUILD RUN <<EOF cat >> /etc/skel/.bashrc
+ set autologout = 30
+ set prompt = "$ "
+ set history = 0
+ set ignoreeof
+EOF
+ONBUILD RUN cp /etc/skel/.bashrc /etc/skel/.profile
+
+ONBUILD RUN addgroup -S ${DOCKER_USER_NAME} -g ${DOCKER_USER_UID} \
+  && adduser -S -G ${DOCKER_USER_NAME} -u ${DOCKER_USER_UID} ${DOCKER_USER_NAME} \
  --shell /bin/bash \
  --home /home/${DOCKER_USER_NAME} \
  -k /etc/skel
@@ -77,7 +87,8 @@ ONBUILD COPY . ./
 
 ONBUILD COPY ./docker/*.sh /usr/local/bin/
 ONBUILD RUN chmod -R +x /usr/local/bin/
-ONBUILD RUN command install-dependencies.sh
+
+ONBUILD RUN if [ "$TARGET" != "publish" ]; then install-dependencies.sh; fi;
 
 ONBUILD RUN ls -l \
   && ls /usr/local/bin/ \
@@ -141,7 +152,7 @@ ENV DOCKER_LABEL_KEY ${DOCKER_LABEL_KEY}
 ENV DOCKER_LABEL_VALUE ${DOCKER_LABEL_VALUE}
 LABEL ${DOCKER_LABEL_KEY}=${DOCKER_LABEL_VALUE}
 
-ENV NODE_ENV=production
+ENV NODE_ENV=development
 
 ARG NPM_TOKEN
 ENV NPM_TOKEN ${NPM_TOKEN}
@@ -150,6 +161,4 @@ ARG YARN_TOKEN
 ENV YARN_TOKEN ${YARN_TOKEN}
 ENV YARN_TOKEN ${YARN_TOKEN}
 
-EXPOSE ${SERVER_PORT}
-
-CMD [ "yarn" "publish --access public --new-version ${HOME}/docker/current-version.sh" ]
+CMD [ "yarn-publish.sh" ]
