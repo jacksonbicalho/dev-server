@@ -13,7 +13,7 @@ jobs:
           registry-url: 'https://registry.yarnpkg.com'
       - run: |
           chmod -R +x ./docker
-          yarn-publish.sh
+          ./docker/yarn-publish.sh
         shell: bash
         env:
           YARN_TOKEN: ${{ secrets.GH_TOKEN.YARN_TOKEN }}
