@@ -2,12 +2,14 @@ import { JestConfigWithTsJest } from 'ts-jest';
 import { readFile, writeFile } from '../src/utils/file';
 import path from 'path';
 import { CONSTANTS } from '../src';
+import { getMarkdownReport } from '../scripts';
 const coverageSummaryFilePath = path.join(
   __dirname,
   '..',
   CONSTANTS.SSLDEV_COVERAGE_PATCH,
   'coverage-summary.json'
 );
+
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const coverageSummaryFile = require(`${coverageSummaryFilePath}`);
 
@@ -139,6 +141,26 @@ const teardown = async (
     jestCoverageConfigPath,
     JSON.stringify(dataJestCoverageJson, null, 2)
   );
+
+  const coverageSummaryFilePathTxt = path.join(
+    __dirname,
+    '..',
+    CONSTANTS.SSLDEV_COVERAGE_PATCH,
+    'coverage.txt'
+  );
+  const srcBasePath = path.join(
+    __dirname,
+    '..'
+  );
+
+
+  const titleFile = '# `ssldev` - Coverage'
+  const readmeLink = '## README \n \
+  ### [README.md](README.md)';
+  const mdReport = `${titleFile}\n${await getMarkdownReport(
+    coverageSummaryFilePathTxt, srcBasePath)}\n${readmeLink}`
+  const file = path.join(__dirname, '..', 'COVERAGE.md')
+  writeFile(file, mdReport)
 };
 
 module.exports = teardown;

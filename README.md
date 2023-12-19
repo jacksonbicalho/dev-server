@@ -58,3 +58,8 @@ Insira em scripts
 ## Importante!
 
 Quando você executar `mkcert`, será obrigado a usar uma senha de sudo.
+
+
+## Tests
+
+### [COVERAGE.md](COVERAGE.md)

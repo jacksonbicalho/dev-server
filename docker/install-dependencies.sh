@@ -19,7 +19,9 @@ else
 fi
 
 if [[ -f "${DOCKER_WORK_DIR}/yarn.lock" || -f "${DOCKER_WORK_DIR}/.yarnrc.yml" || -f "${DOCKER_WORK_DIR}/.yarnrc" ]]; then
+  yarn cache clean
   yarn install $YARN_OPTS
+  npm install -g npm@latest
   # Check if the installed tree is correct. Install all dependencies if not
   yarn check --verify-tree || NODE_ENV=development yarn install
   yarn cache clean

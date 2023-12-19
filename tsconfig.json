@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "es2017",
+    "lib": ["ES2021"],
     "types": [
       "node",
       "jest"

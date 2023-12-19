@@ -2,6 +2,7 @@
 *.pem
 node_modules
 dist
+coverage
 
 #logs
 .npm/_logs/
@@ -10,15 +11,11 @@ dist
 #cache
 .cache
 
-
 #pack builds
 *.tgz
 
 #yarn
-.yarn/bin
-
-
-coverage
+.yarn/
 
 .ash_history
 .node_repl_history

@@ -17,6 +17,12 @@ export function writeFile(
 ) {
   fs.writeFileSync(file, data);
 }
+export function appendFile(
+  file: fs.PathOrFileDescriptor,
+  data: string
+) {
+  fs.appendFileSync(file, data);
+}
 
 export function readFile(
   file: fs.PathOrFileDescriptor,
