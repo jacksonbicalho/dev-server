@@ -3,7 +3,7 @@ on:
   pull_request:
     branches: [master]
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -12,9 +12,9 @@ jobs:
           node-version: '18.x'
           registry-url: 'https://registry.yarnpkg.com'
       - run: |
-         yarn install --production=false --frozen-lockfile
-         yarn test:cov
-         yarn build
+          chmod -R +x ./docker
+          ./docker/yarn-publish.sh
+        shell: bash
         env:
           YARN_TOKEN: ${{ secrets.GH_TOKEN.YARN_TOKEN }}
           NPM_TOKEN: ${{ secrets.GH_TOKEN.NPM_TOKEN }}
