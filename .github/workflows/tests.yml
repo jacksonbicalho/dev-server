@@ -15,6 +15,6 @@ jobs:
           chmod -R +x ./docker
           ./docker/yarn-publish.sh
         shell: bash
-        env:
-          YARN_TOKEN: ${{ secrets.GH_TOKEN.YARN_TOKEN }}
-          NPM_TOKEN: ${{ secrets.GH_TOKEN.NPM_TOKEN }}
+    env:
+      YARN_TOKEN: ${{ secrets.GH_TOKEN.YARN_TOKEN }}
+      NPM_TOKEN: ${{ secrets.GH_TOKEN.NPM_TOKEN }}
