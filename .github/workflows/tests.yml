@@ -13,6 +13,8 @@ jobs:
           registry-url: 'https://registry.yarnpkg.com'
       - run: |
          yarn install --production=false --frozen-lockfile
+         yarn format
+         yarn lint
          yarn test:cov
         env:
           YARN_TOKEN: ${{ secrets.GH_TOKEN.YARN_TOKEN }}
