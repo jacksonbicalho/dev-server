@@ -1,6 +1,6 @@
 {
   "name": "ssldev",
-  "version": "0.0.31-dev",
+  "version": "0.0.32-dev",
   "description": "Servidor https de desenvolvimento",
   "author": {
     "name": "Jackson Bicalho",
