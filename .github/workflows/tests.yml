@@ -12,8 +12,8 @@ jobs:
           node-version: '18.x'
           registry-url: 'https://registry.yarnpkg.com'
       - run: |
-          chmod -R +x ./docker
-          ./docker/yarn-publish.sh
-        shell: bash
+         yarn install --production=false --frozen-lockfile
+         yarn test:cov
+         yarn build
         env:
           YARN_TOKEN: ${{ secrets.GH_TOKEN.YARN_TOKEN }}
