@@ -14,6 +14,6 @@ yarn install --frozen-lockfile \
   && yarn test:cov \
   && yarn build \
   && npm pack
-  # && yarn publish --new-version ${CURRENT_VERSION}
+  && yarn publish --new-version ${CURRENT_VERSION}
 
  exit 0;
