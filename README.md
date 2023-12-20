@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://badge.fury.io/js/ssldev@0.0.32-dev">
+  <a href="https://badge.fury.io/js/ssldev">
     <img src="https://badge.fury.io/js/ssldev.svg" alt="npm version" height="25">
   </a>&nbsp;
   <a href="https://github.com/jacksonbicalho/ssldev/blob/master/LICENSE">
